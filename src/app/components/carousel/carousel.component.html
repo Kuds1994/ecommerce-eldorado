@@ -1,0 +1,21 @@
+<div class="carousel-container" >
+
+    <h1>{{carouselTitle}}</h1>
+
+    <swiper
+    [slidesPerView]="3"
+    [spaceBetween]="30"
+    [slidesPerGroup]="3"
+    [loop]="true"
+    [loopFillGroupWithBlank]="true"
+    [pagination]="{
+      clickable: true
+    }"
+    [navigation]="true"
+    class="mySwiper"
+  >
+    <ng-template swiperSlide 
+        *ngFor="let product of products"
+    ><img src="{{product.img}}" alt=""></ng-template>
+  </swiper>
+</div>

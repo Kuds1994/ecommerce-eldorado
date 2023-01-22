@@ -1,0 +1,11 @@
+<ng-container *ngIf="user == ''; else login">
+
+    Dados de login incorretos!
+
+</ng-container>
+
+<ng-template #login>
+<div class="user" >
+    <p>Bem vindo {{user}}!!!</p>
+</div>
+</ng-template>

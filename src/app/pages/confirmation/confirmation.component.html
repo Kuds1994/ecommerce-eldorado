@@ -1,0 +1,54 @@
+<div class="confirmation">
+
+    <ng-container *ngIf="cart.products.length > 0; else empty">
+        <div class="cart-details-container">
+            <div class="cart-details-list">
+                
+                <div class="message-confirmation">
+
+                    <h2>Seu pedido está em processamento</h2>
+                    <p>Você recebera em breve um e-mail com as informações do seu pedido</p>
+        
+                </div>
+                <div class="spacer-cart"></div>
+
+                <table class="list-cart-itens-page">
+                    <tr>
+                        <th></th>
+                        <th colspan="1">Descrição</th>
+                        <th >Preço</th>
+                        <th>Quantidade</th>
+                    </tr>
+
+                
+                    <tr *ngFor="let product of cart.products" class="cart-itens">
+                        <td><img src="{{product.img}}" alt=""></td>
+                        <td>{{product.description.length > 20 ? product.description.slice(0, 20) + '...' : product.description}}</td>
+                        <td>R{{product.value | currency}}</td>
+                        <td class="product-details-informations-qtd"><span class="quantity-item">{{product.qtd}}</span></td>
+                    </tr> 
+                    
+                    
+                </table>
+
+                <div class="spacer-cart"></div>
+                <div class="cart-resume-total">
+                    <div>Desconto {{cart.discount > 0 ? 'de ' +cart.discount * 100 + '%' : 'não aplicado'}}</div>
+                    <div class="subtotal">Subtotal: {{cart.subtotal | currency: 'BRL'}}</div>        
+                    <div class="total">Total: {{cart.total | currency: 'BRL'}}</div> 
+                      
+                </div>
+
+                
+            </div>
+
+            
+        </div>
+        
+    </ng-container>
+    <ng-template #empty>
+        <h1 [ngStyle]="{'text-align': 'center'}">Carrinho vazio</h1>
+        <a [ngStyle]="{'text-align': 'center', 'display': 'block'}" routerLink="/">Voltar para home</a>
+    </ng-template>
+
+</div>

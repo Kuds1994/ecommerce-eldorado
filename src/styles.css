@@ -1,0 +1,297 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400&display=swap');
+
+@import "~swiper/css";
+@import "~swiper/css/pagination";
+@import "~swiper/css/navigation";
+.swiper {
+  width: 100%;
+  height: 80%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+*{
+   
+    font-family: 'Mukta', 'Arial Narrow', Arial, sans-serif;
+    box-sizing: border-box;
+   
+} 
+
+body{
+
+    position: relative;
+    padding: 0;
+    margin: 0;
+
+}
+
+
+.spacer{
+    width: 60%;
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+
+.add-to-cart-button{
+
+    width: 100%;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    background-color: grey;
+    color: white;
+    font-size: 20px;
+
+}
+
+.add-to-cart-button:hover{
+
+    cursor: pointer;
+
+}
+
+.list-cart-itens{
+
+    width: 100%;
+
+}
+
+.list-cart-itens tr{
+
+    border: 1px solid black;   
+    
+}
+
+.list-cart-itens td a{
+
+    padding: 2px;
+
+}
+
+.list-cart-itens td a:hover{
+
+    cursor: pointer;
+
+}
+
+.cart-itens{
+
+    margin: 10px 0;
+
+}
+
+.quantity-item{
+
+
+}
+
+.emptycart-button{
+
+    margin: 10px 0;
+    display: inline-block;
+
+}
+
+.emptycart-button:hover{
+
+    cursor: pointer;
+
+}
+
+.product-details-informations-buy-button:hover{
+
+    cursor: pointer;
+
+}
+
+
+.product-details-informations-qtd-input{
+    
+    width: 7%;
+    text-align: center;
+    border: 0;      
+
+}
+
+.product-details-informations-qtd-buttons{
+    box-sizing: border-box;
+    padding: 0 10px;
+    background-color: gray;
+    border: .1px solid gray;
+    color: white;
+    border-radius: 2px;
+}
+
+.discount-input{
+
+    border: .1px solid grey;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 5px;
+
+}
+
+.discount-button{
+
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: gray;
+    color: white;
+
+}
+
+.discount-button:hover{
+
+    cursor: pointer;
+
+}
+
+.discount-alert-success{
+
+    display: inline-block;
+    padding: 5px 0;
+    background-color: green;
+    color: white;
+    visibility: visible;
+    margin-top: 5px;
+
+}
+
+.discount-alert-fails{
+
+    display: inline-block;
+    padding: 5px 0;
+    background-color: red;
+    color: white;
+    visibility: visible;
+    margin-top: 5px;
+
+}
+
+.discount{
+
+    margin: 10px 0;
+
+}
+
+
+
+.discount-input{
+
+    border: .1px solid grey;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 5px;
+
+}
+
+.cart-details-list{
+
+    width: 1000px;
+    align-self: center;
+
+}
+
+.cart-itens td img{
+    width: 50px;
+    height: 50px;
+}
+
+.cart-details-container{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.spacer-cart{
+    width: 100%;
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+
+
+.list-cart-itens-page{
+    width: 100%;
+}
+
+.list-cart-itens-page th{
+    text-align: left;
+}
+
+.list-cart-itens-page td{
+    vertical-align: middle;
+}
+
+.cart-resume-total{
+
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+
+.subtotal{
+
+    font-weight: 200;
+    font-size: 30px;
+
+}
+
+.total{
+
+    font-size: 50px;
+
+}
+
+.button-finish{
+
+    margin: 20px 0;
+    width: 100%;
+    font-size: 30px;
+    background-color: green;
+    color: white;
+    border: 0;
+    border-radius: 20px;
+
+}
+
+.button-finish:hover{
+
+    cursor: pointer
+
+}
+
+
+

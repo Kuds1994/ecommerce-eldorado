@@ -1,0 +1,17 @@
+<div class="login">
+
+
+    <div class="login-form">
+        <div>
+            <label for="user">Usuário</label>
+            <input type="text" #user id="user">
+        </div>
+        <div>
+            <label for="password">Senha</label>
+            <input type="password" #password>
+        </div>
+        <button class="login-button" (click)="makeLogin(user.value)">Logar</button>
+    </div>
+
+    
+</div>

@@ -1,0 +1,102 @@
+<div class="checkout">
+    <ng-container *ngIf="cart.products.length > 0; else empty">
+    <div class="checkout-container">
+        <div class="checkout-total">Total: {{cart.total | currency: 'BRL'}}</div>
+        
+        <div class="spacer-checkout"></div>
+        <div class="checkout-payments">
+
+            <select #payment (change)="onSelect(payment.value)" name="" id="">
+                <option value="0" default>Selecione a forma de pagamento</option>
+                <option value="1">Boleto</option>
+                <option value="2">Cartão de crédito</option>
+                <option value="3">Cartão de débito</option>
+                <option value="4">Pix</option>
+                
+            </select>
+        </div>
+
+        
+
+        <div class="payment-showout">
+            <ng-container [ngSwitch]="payments">
+                <div *ngSwitchCase="'1'">
+                    <div>Clique para baixar o boleto</div>
+                    <fa-icon [icon]="faBarcode" class="payment-shout-barcode"></fa-icon>
+                </div>
+                <div *ngSwitchCase="'2'" class="payment-showout-card">
+                    <div>
+                        <label for="name">Nome do cartão</label>
+                        <input type="text" id="name" >
+                    </div>
+                    <div>                        
+                        <label for="card-number">Número do cartão</label>
+                        <input type="text" id="cart-number" >
+                    </div>
+                    <div>
+                        <label for="card-month" >Mês</label>
+                        <input type="text" id="cart-month" >
+                    </div>
+                    <div>
+                        <label for="year" >Ano</label>
+                        <input type="text" id="year" >
+                    </div>  
+                    <div>
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" > 
+                    </div>  
+                    <div>
+                        <label for="name">Selecione a quantidade de parcelas</label>
+                        <select>
+                            <option *ngFor="let numbers of numSequence(12); let i = index">{{i+1}}x de {{cart.total/(i+1) | currency: 'BRL'}}</option>                 
+                        </select>
+                    </div>                      
+
+                </div>
+                <div *ngSwitchCase="'3'" class="payment-showout-card">
+                    <div>
+
+                        <label for="name">Nome do cartão</label>
+                        <input type="text" >
+
+                    </div>
+                    <div>
+                        <label for="name">Número do cartão</label>
+                        <input type="text" >
+                    </div>
+                    <div>
+                        <label for="name">Mês</label>
+                        <input type="text" >
+                    </div>
+                    <div>
+                        <label for="name">Ano</label>
+                        <input type="text" >
+                    </div>  
+                    <div>
+                        <label for="name">CVV</label>
+                        <input type="text" > 
+                    </div>   
+
+
+                </div>
+                <div *ngSwitchCase="'4'">
+                    <div>Pague escaneando o seguinte qrcode</div>
+                    <fa-icon [icon]="faQrcode" class="payment-shout-barcode"></fa-icon>
+
+                </div>
+                <div *ngSwitchDefault>
+                </div>
+            </ng-container>
+            
+
+        </div>
+        <div class="spacer-checkout"></div>
+        <div><button class="button-checkout" data-testid="button" [ngClass]="disable ? 'button-disable' : 'button-enable'" [disabled]="disable" (click)="concluirPagamento()">Finalizar</button></div>
+    </div>
+    </ng-container>
+    <ng-template #empty>
+        <h1 [ngStyle]="{'text-align': 'center'}">Carrinho vazio</h1>
+        <a [ngStyle]="{'text-align': 'center', 'display': 'block'}" routerLink="/">Voltar para home</a>
+    </ng-template>
+
+</div>

@@ -1,0 +1,86 @@
+.cart-details{
+
+    width: 100%;
+    height: 100vh;
+
+
+}
+
+.cart-details-list{
+
+    width: 1000px;
+    align-self: center;
+
+}
+
+.cart-itens td img{
+    width: 50px;
+    height: 50px;
+}
+
+.cart-details-container{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.spacer-cart{
+    width: 100%;
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+
+
+.list-cart-itens-page{
+    width: 100%;
+}
+
+.list-cart-itens-page th{
+    text-align: left;
+}
+
+.list-cart-itens-page td{
+    vertical-align: middle;
+}
+
+.cart-resume-total{
+
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+
+.subtotal{
+
+    font-weight: 200;
+    font-size: 30px;
+
+}
+
+.total{
+
+    font-size: 50px;
+
+}
+
+.button-finish{
+
+    margin: 20px 0;
+    width: 100%;
+    font-size: 30px;
+    background-color: green;
+    color: white;
+    border: 0;
+    border-radius: 20px;
+
+}
+
+.button-finish:hover{
+
+    cursor: pointer
+
+}

@@ -1,0 +1,40 @@
+.login{
+
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    
+
+}
+
+.login-form{
+
+    width: 200px;
+
+}
+
+.login label{
+    display: block;
+}
+
+.login input{
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.login-button{
+
+    width: 100%;
+    border: 0;
+    border-radius: 10px;
+    background-color: gray;
+    color: white;
+    font-size: 20px;
+
+}
+
+.login-button:hover{
+
+    cursor: pointer;
+
+}

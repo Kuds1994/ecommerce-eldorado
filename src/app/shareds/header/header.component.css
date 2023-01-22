@@ -1,0 +1,97 @@
+.header{
+
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: wrap;
+    position: sticky;
+    width: 100%;        
+    background-color: rgb(128,128,128);
+    top:0;
+    left: 0;
+    z-index: 100;
+
+}
+
+.logo a{
+
+    flex-basis: 5%;    
+    display: flex;    
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+
+
+.header-links{
+
+    padding: 0;
+    margin: 0;
+    flex-basis: 60%;    
+    align-self: center;
+    z-index: 1000;
+
+}
+
+.header-links a:hover{
+
+    cursor: pointer;
+
+}
+
+/*.header-link-marculino{
+
+    padding: 10px 30px;
+    background-color: gray;
+    position: absolute;    
+    text-decoration: none;
+    list-style-type: none;
+    width: 150px;
+    color: black;
+    border-end-start-radius: 10px;
+    border-end-end-radius: 10px;
+    z-index: -100;
+    top: 70px;
+    transition: .1s all linear;
+
+
+}*/
+
+
+
+
+.header-link-marculino a{
+
+    text-decoration: none;
+    color: white;
+
+}
+
+.header-link{
+
+    display: inline;
+    margin: 0 30px;
+    color: white;
+
+}
+
+.right-menu{
+
+    box-sizing: border-box;
+    align-self: center;
+    flex-basis: 20%;
+
+}
+
+.right-menu a{
+
+    text-decoration: none;
+    color: black;
+    margin-left: 30px;
+    color: white;
+
+}

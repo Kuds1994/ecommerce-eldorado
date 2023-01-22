@@ -1,0 +1,19 @@
+<div class="product-list">  
+
+    <div class="product" *ngFor="let product of products">
+
+      <img  src="{{product.img}}"  alt="">
+
+      <div class="product-description">
+        {{product.description.length > 30 ? product.description.slice(0, 30) + '...' : product.description}}
+      </div>
+
+      <div class="product-price">
+        <b>R{{product.value | currency}}</b>
+      </div>
+
+      <button routerLink="/product/{{product.id}}" class="add-to-cart-button">Adicionar no carrinho</button>
+
+    </div>
+    
+</div>

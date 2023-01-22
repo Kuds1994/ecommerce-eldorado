@@ -1,0 +1,21 @@
+<div class="header">
+
+    <div class="logo"><a routerLink="/"><img src="https://via.placeholder.com/50" alt=""></a></div>
+
+    <ul class="header-links">
+        <li class="header-link"><a>Masculino</a>
+        </li>
+        <li class="header-link"><a>Feminino</a>
+        </li>
+        <li class="header-link"><a>Acessórios</a>
+        </li>
+    </ul>
+
+    <div class="right-menu">
+
+        <a routerLink="{{user == '' ? '/login' : '/user'}}">{{user != '' ? 'Bem Vindo, ' + user : '' }} <fa-icon [icon]="faUser"></fa-icon></a>
+        <a routerLink="/cart"><fa-icon [icon]="faCartShopping"></fa-icon></a>
+
+    </div>
+
+</div>

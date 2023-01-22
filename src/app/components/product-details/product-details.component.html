@@ -1,0 +1,28 @@
+<div class="product-details-container">
+    <div class="product-details-main">
+
+        <div class="product-details-image"><img src="{{product.img}}" alt=""></div>
+        <div class="product-details-informations">
+
+
+                <div>
+
+                    <div class="product-details-informations-item-description">{{product.description}}</div>  
+                    <div class="spacer"></div>
+                    <div>Quantidade</div>               
+                    <div class="product-details-informations-qtd"><button class="product-details-informations-qtd-buttons" (click)="addQtd()">+</button><input type="text" value="{{qtd}}" class="product-details-informations-qtd-input" #quantity disabled/><button class="product-details-informations-qtd-buttons" (click)="rmvQtd()">-</button></div>
+                    
+                
+                </div>
+                <div>
+                    <h1 class="product-details-informations-price">{{product.value | currency: 'BRL'}}</h1>
+                    <button class="product-details-informations-buy-button" (click)="addToCart(product, quantity.value)">COMPRAR</button>   
+
+                </div>
+
+
+        </div>
+
+    </div>
+</div>
+<app-cart></app-cart>

@@ -1,0 +1,38 @@
+<div class="checkout-div" [@toggleClick]="openCart" [ngClass]="openCart ? 'abrir-carrinho' : 'fechar-carrinho'">
+
+    <div>
+    <h1>Meu Carrinho</h1>
+
+      <div class="checkout" *ngIf="cart.products.length > 0; else empty" >
+
+        <div class="list-description-itens-cart">
+          
+
+          <table class="list-cart-itens">
+            <tr *ngFor="let product of cart.products">
+            <ng-container class="cart-itens">
+              <td>{{product.description.length > 20 ? product.description.slice(0, 20) + '...' : product.description}}</td>
+              <td>R{{product.value | currency}}</td>
+              <td><a (click)="addQtdToCart(product)">+</a><span class="quantity-item">{{product.qtd}}</span> <a (click)="removeQtdToCart(product.id)">-</a></td>
+              <td><a class="emptycart-button" (click)="emptyCart(product.id)"><fa-icon [icon]="faTrash"></fa-icon></a></td>
+
+            </ng-container>
+            </tr>
+          </table>
+        </div>
+    </div>
+
+  </div>
+
+  <div><button routerLink="/cart" class="button-go-to-cart">Ir para carrinho</button></div>
+
+    <div class="fechar-carrinho-button">
+      <a (click)="fecharCarrinho()"><fa-icon [icon]="faXmark"></fa-icon> </a>
+    </div>
+    <ng-template #empty>
+
+      <div [ngStyle]="{'text-align': 'center'}">O carrinho está vazio</div>
+
+    </ng-template>
+
+  </div>
