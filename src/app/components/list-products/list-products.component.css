@@ -1,17 +1,34 @@
 .product-list {
 
-    display: flex;
-    justify-content: space-around;  
-    flex-wrap: wrap;
+margin: auto;
+
+
+}
+
+.product-list::after{
+
+    content: "";
+
 
 }
 
 .product {
 
-    flex-basis: 22%;
     padding: 20px;
-    margin-bottom: 20px;
-    border: .2px solid gainsboro;    
+    border: .2px solid gainsboro; 
+    width: 20%;
+    margin: 15px 6.66%;
+    display: inline-block;
+
+}
+
+.product:last-child {
+
+}
+
+.product img {
+
+    width: 100%;
 
 }
 
