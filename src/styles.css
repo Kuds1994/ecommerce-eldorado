@@ -53,6 +53,12 @@ body{
 
 }
 
+body, html{
+
+    height: 100%;
+
+}
+
 
 .spacer{
     width: 60%;
@@ -110,6 +116,7 @@ body{
 
 .quantity-item{
 
+    width: 30px;
 
 }
 
@@ -135,7 +142,7 @@ body{
 
 .product-details-informations-qtd-input{
     
-    width: 7%;
+    width: 15%;
     text-align: center;
     border: 0;      
 
@@ -215,8 +222,8 @@ body{
 }
 
 .cart-details-list{
-
-    width: 1000px;
+  
+    width: 50%;
     align-self: center;
 
 }

@@ -20,7 +20,7 @@ import { DiscountService } from 'src/app/services/discount/discount.service';
         right: 0
       })),
       state('false', style({
-        right: '-500px'
+        right: '-600px'
       })),
       transition('true => false', animate('400ms ease')),  // animation timing
       transition('false => true', animate('400ms ease'))
