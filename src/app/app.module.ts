@@ -22,6 +22,7 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { SwiperModule } from "swiper/angular";
+import { AlertsComponent } from './components/alerts/alerts.component';
 
 
 
@@ -42,6 +43,7 @@ import { SwiperModule } from "swiper/angular";
     CheckoutComponent,
     ConfirmationComponent,
     CarouselComponent,
+    AlertsComponent,
   ],
   imports: [
     BrowserModule,

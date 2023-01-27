@@ -1,8 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Product } from 'src/app/core/models/product';
-import { ProductService } from 'src/app/services/product/product.service';
+import { ProductService } from 'src/app/core/services/product/product.service';
 import SwipeCore, {Pagination, Navigation} from "swiper"
-import { SwiperComponent} from 'swiper/angular'
 
 SwipeCore.use([Pagination,Navigation])
 

@@ -37,6 +37,10 @@
   object-fit: cover;
 }
 
+::backdrop {
+    background-color: fadeout(#000, 50%);
+}
+
 
 *{
    
@@ -53,7 +57,7 @@ body{
 
 }
 
-body, html{
+body{
 
     height: 100%;
 

@@ -10,6 +10,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { UserComponent } from './pages/user/user.component';
 import { GuardsGuard } from './core/guard-login/guards.guard';
 import { NotFoundComponent } from './shareds/not-found/not-found.component';
+import { LeavingCartGuard } from './core/guard-leaving-cart/leaving-cart.guard';
 
 const routes: Routes = [
 
@@ -18,7 +19,7 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'user', component: UserComponent, canActivate: [GuardsGuard]},
   {path: 'cart', component: CartDetailsComponent},
-  {path: 'checkout', component: CheckoutComponent},  
+  {path: 'checkout', component: CheckoutComponent, canDeactivate: [LeavingCartGuard]},  
   {path: 'confirmation', component: ConfirmationComponent},
   {path: 'product/:id', component: ProductDetailsComponent},
   {path: '**', component: NotFoundComponent}

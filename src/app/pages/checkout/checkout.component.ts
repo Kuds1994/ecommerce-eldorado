@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBarcode, faQrcode } from '@fortawesome/free-solid-svg-icons';
 import { Cart } from 'src/app/core/models/cart';
-import { CartService } from 'src/app/services/cart/cart.service';
+import { CartService } from 'src/app/core/services/cart/cart.service';
 
 @Component({
   selector: 'app-checkout',

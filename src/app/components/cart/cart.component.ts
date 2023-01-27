@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { faShoppingCart, faXmark, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Cart } from 'src/app/core/models/cart';
 import { Product } from 'src/app/core/models/product';
-import { CartService } from 'src/app/services/cart/cart.service';
+import { CartService } from 'src/app/core/services/cart/cart.service';
 import { Discount } from 'src/app/core/models/discount';
 
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { DiscountService } from 'src/app/services/discount/discount.service';
+import { DiscountService } from 'src/app/core/services/discount/discount.service';
+import { Observable } from 'rxjs';
 
 
 @Component({

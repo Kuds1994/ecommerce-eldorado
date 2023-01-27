@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { faShoppingCart, faTrash, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Cart } from 'src/app/core/models/cart';
 import { Product } from 'src/app/core/models/product';
-import { CartService } from 'src/app/services/cart/cart.service';
-import { DiscountService } from 'src/app/services/discount/discount.service';
+import { CartService } from 'src/app/core/services/cart/cart.service';
+import { DiscountService } from 'src/app/core/services/discount/discount.service';
 
 @Component({
   selector: 'app-cart-details',

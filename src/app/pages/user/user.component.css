@@ -1,5 +1,17 @@
 .user{
 
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    
+
+}
+
+.user-container{
+
+    width: 50%;
 
 }
