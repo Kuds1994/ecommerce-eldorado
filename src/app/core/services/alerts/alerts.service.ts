@@ -8,11 +8,9 @@ export class AlertsService {
 
   constructor() { }
 
-
-
   private bShow = new BehaviorSubject<boolean>(false);
   private bExit = new BehaviorSubject<boolean>(false);
-  
+
   currentShow = this.bShow.asObservable();
   currentExit= this.bExit.asObservable();
 
@@ -24,7 +22,6 @@ export class AlertsService {
 
   setExit(value:boolean){
 
-    this.bShow.next(false)
     this.bExit.next(value)
 
   }

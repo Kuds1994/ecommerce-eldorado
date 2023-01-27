@@ -1,5 +1,7 @@
 <div class="alert" >
     <div [@showUp]="show ? true : false " class="alert-main">
-        <div>Você esta saindo da tela de checkout</div>
+        <div>Deseja realmente sair da tela de checkout?</div>
+        <button (click)="setAlerts(false)">Sim</button>
+        <button class="alert-main-button-no">Não</button>
     </div>
 </div>

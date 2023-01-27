@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBarcode, faQrcode } from '@fortawesome/free-solid-svg-icons';
 import { Cart } from 'src/app/core/models/cart';
+import { AlertsService } from 'src/app/core/services/alerts/alerts.service';
 import { CartService } from 'src/app/core/services/cart/cart.service';
 
 @Component({
@@ -13,9 +14,10 @@ export class CheckoutComponent {
 
   cart!: Cart
 
-  constructor(private cartService:CartService, private router:Router){
+  constructor(private cartService:CartService, private alertsService: AlertsService, private router:Router){
 
     this.cart = this.cartService.getCart()
+    this.alertsService.setExit(false)
 
   }  
 
