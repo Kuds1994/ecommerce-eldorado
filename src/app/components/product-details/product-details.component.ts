@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute  } from '@angular/router';
 import { Product } from 'src/app/core/models/product';
+import { ProductDummy } from 'src/app/core/models/product_dummy';
 import { CartService } from 'src/app/core/services/cart/cart.service';
 import { ProductService } from 'src/app/core/services/product/product.service';
 @Component({
@@ -10,10 +11,33 @@ import { ProductService } from 'src/app/core/services/product/product.service';
 })
 export class ProductDetailsComponent implements OnInit  {
 
-  product!: Product; 
+  product: ProductDummy = {
+    id: 0,
+    description: '',
+    title: '',
+    price: 0,
+    discountPercentage: 0,
+    rating: 0,
+    stock: 0,
+    brand: '',
+    category: '',
+    thumbnail: '',
+    images: []
+  }; 
 
   constructor(private route:ActivatedRoute, private productService:ProductService, private cartService:CartService){
 
+    const id = this.route.snapshot.paramMap.get('id');
+    this.productService.getProductById(Number(id)).subscribe({
+      next: (response) =>{
+
+        this.product = response
+
+      },
+      error: (error) =>{
+        console.log(error)
+      }});  
+      
   }
 
   qtd = 1
@@ -33,12 +57,10 @@ export class ProductDetailsComponent implements OnInit  {
 
   ngOnInit(): void {
 
-    const id = this.route.snapshot.paramMap.get('id');
-    this.product = this.productService.getProductById(Number(id))!
-  
+    
   }
 
-  addToCart(product: Product, quantity: string){
+  addToCart(product: ProductDummy, quantity: string){
 
     this.cartService.addQtdToCartWithQuantity(product, Number(quantity));
   

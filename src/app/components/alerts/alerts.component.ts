@@ -37,7 +37,6 @@ export class AlertsComponent implements OnInit {
   setAlerts(value:boolean):void {
 
     this.alertsService.setShow(false)
-    this.alertsService.setExit(true)
 
   }
 

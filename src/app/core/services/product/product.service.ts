@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs';
 import { Product } from 'src/app/core/models/product';
+import { ProductDummy } from '../../models/product_dummy';
+import { ProductDaoService } from './product-dao.service';
 
 @Injectable({
   providedIn: 'root'
@@ -122,12 +125,21 @@ export class ProductService {
 
   ]
 
-  constructor() { }
+  constructor(private productDaoService: ProductDaoService) { }
 
 
   getProducts() {
-    return this.products;
+    return this.productDaoService.getProducs().pipe(
+      map(source => {
+        let list = source.products        
+        .map((product: ProductDummy) => ({
+          ...product
+        }))
+        return list;
+      })
+    )    
   }
+
 
   getProductByGender(gender: string){
   
@@ -139,6 +151,11 @@ export class ProductService {
   
   getProductById(id: number){
   
-    return this.products.find(f => f.id == id)
+    return this.productDaoService.getProducsById(id).pipe(
+      map(source => { 
+        let productDummy: ProductDummy = {...source}   
+        return productDummy
+      })
+    )
   }
 }

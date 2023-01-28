@@ -1,4 +1,6 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SwiperModule } from 'swiper/angular';
 
 import { CarouselComponent } from './carousel.component';
 
@@ -8,7 +10,9 @@ describe('CarouselComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CarouselComponent ]
+      declarations: [ CarouselComponent],
+      providers: [HttpClient, HttpHandler],
+      imports: [SwiperModule]
     })
     .compileComponents();
 

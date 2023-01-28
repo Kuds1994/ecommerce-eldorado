@@ -16,9 +16,9 @@
 
                 
                     <tr *ngFor="let product of cart.products" class="cart-itens">
-                        <td><img src="{{product.img}}" alt=""></td>
+                        <td><img src="{{product.thumbnail}}" alt=""></td>
                         <td>{{product.description.length > 20 ? product.description.slice(0, 20) + '...' : product.description}}</td>
-                        <td>R{{product.value | currency}}</td>
+                        <td>R{{product.price | currency}}</td>
                         <td class="product-details-informations-qtd"><button class="product-details-informations-qtd-buttons" (click)="addQtdToCart(product)">+</button><span class="quantity-item"><input type="text" value="{{product.qtd}}" class="product-details-informations-qtd-input" #quantity disabled/></span> <button class="product-details-informations-qtd-buttons" (click)="removeQtdToCart(product.id)">-</button></td>
                         <td><a class="emptycart-button" (click)="emptyCart(product.id)"><fa-icon [icon]="faTrash"></fa-icon></a></td>
                     </tr> 

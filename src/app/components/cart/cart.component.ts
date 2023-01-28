@@ -9,6 +9,7 @@ import { Discount } from 'src/app/core/models/discount';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { DiscountService } from 'src/app/core/services/discount/discount.service';
 import { Observable } from 'rxjs';
+import { ProductDummy } from 'src/app/core/models/product_dummy';
 
 
 @Component({
@@ -72,10 +73,9 @@ export class CartComponent implements OnInit {
 
     }    
 
-
   }
 
-  addQtdToCart(id: Product) {
+  addQtdToCart(id: ProductDummy) {
 
     this.cartService.addQtdToCart(id)
 

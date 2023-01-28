@@ -34,15 +34,11 @@ export class AuthService {
 
     const user = String(localStorage.getItem('user'));
 
-
     if(user !== 'null'){
       return user
     }else{
       return ''  
-    }
-      
-
-   
+    }        
 
   }
 

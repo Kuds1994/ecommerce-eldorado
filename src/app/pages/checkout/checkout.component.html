@@ -91,7 +91,7 @@
 
         </div>
         <div class="spacer-checkout"></div>
-        <div><button class="button-checkout" data-testid="button" [ngClass]="disable ? 'button-disable' : 'button-enable'" [disabled]="disable" (click)="concluirPagamento()">Finalizar</button></div>
+        <div><button class="button-checkout" [ngClass]="disable ? 'button-disable' : 'button-enable'" [disabled]="disable" (click)="concluirPagamento()">Finalizar</button></div>
     </div>
     </ng-container>
     <ng-template #empty>

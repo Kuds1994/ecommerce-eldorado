@@ -23,6 +23,7 @@ import { ConfirmationComponent } from './pages/confirmation/confirmation.compone
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { SwiperModule } from "swiper/angular";
 import { AlertsComponent } from './components/alerts/alerts.component';
+import { HttpClientModule } from '@angular/common/http'
 
 
 
@@ -51,7 +52,8 @@ import { AlertsComponent } from './components/alerts/alerts.component';
     BrowserAnimationsModule,
     AppRoutingModule,    
     SwiperModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

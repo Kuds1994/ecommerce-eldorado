@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CartComponent } from './cart.component';
 
@@ -8,7 +10,9 @@ describe('CartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CartComponent ]
+      declarations: [ CartComponent ],
+      imports: [FontAwesomeModule, BrowserAnimationsModule]
+
     })
     .compileComponents();
 
@@ -19,5 +23,15 @@ describe('CartComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should apply discount or not', () => {
+    spyOn(component, 'applyDiscount')
+
+    component.applyDiscount;
+
+    expect(component.applyDiscount).toHaveBeenCalled();
+
+
   });
 });

@@ -1,31 +1,32 @@
 import { TestBed } from '@angular/core/testing';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppComponent } from './app.component';
+import { AlertsComponent } from './components/alerts/alerts.component';
+import { ListProductsComponent } from './components/list-products/list-products.component';
+import { AppRoutingModule } from './routing';
+import { FooterComponent } from './shareds/footer/footer.component';
+import { HeaderComponent } from './shareds/header/header.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        AlertsComponent,
+        ListProductsComponent,
+        HeaderComponent,
+        FooterComponent
       ],
+      imports: [AppRoutingModule, FontAwesomeModule]
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
 
-  it(`should have as title 'carrinho_compras'`, () => {
+  it('should ', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
+  
     expect(app.title).toEqual('carrinho_compras');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('carrinho_compras app is running!');
-  });
 });

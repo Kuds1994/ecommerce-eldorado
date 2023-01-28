@@ -1,16 +1,16 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
-import { ProductService } from './product.service';
+import { ProductDaoService } from './product-dao.service';
 
-describe('ProductService', () => {
-  let service: ProductService;
+describe('ProductDaoService', () => {
+  let service: ProductDaoService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [HttpClient, HttpHandler]
     });
-    service = TestBed.inject(ProductService);
+    service = TestBed.inject(ProductDaoService);
   });
 
   it('should be created', () => {

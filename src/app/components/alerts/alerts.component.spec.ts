@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AlertsComponent } from './alerts.component';
 
@@ -8,7 +9,8 @@ describe('AlertsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AlertsComponent ]
+      declarations: [ AlertsComponent ],
+      imports: [BrowserAnimationsModule]
     })
     .compileComponents();
 
@@ -19,5 +21,11 @@ describe('AlertsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should set alerts to true', () => {
+    spyOn(component, 'setAlerts')
+
+    expect(component.setAlerts(true)).toBeTruthy();
   });
 });

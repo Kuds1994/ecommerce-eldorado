@@ -8,9 +8,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { UserComponent } from './pages/user/user.component';
-import { GuardsGuard } from './core/guard-login/guards.guard';
+import { GuardsGuard } from './core/guards/guard-login/guards.guard';
 import { NotFoundComponent } from './shareds/not-found/not-found.component';
-import { LeavingCartGuard } from './core/guard-leaving-cart/leaving-cart.guard';
+import { LeavingCartGuard } from './core/guards/guard-leaving-cart/leaving-cart.guard';
 
 const routes: Routes = [
 
