@@ -25,6 +25,7 @@ describe('AlertsComponent', () => {
 
   it('should set alerts to true', () => {
     spyOn(component, 'setAlerts')
+    //
 
     expect(component.setAlerts(true)).toBeTruthy();
   });
