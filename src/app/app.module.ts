@@ -26,7 +26,7 @@ import { AlertsComponent } from './components/alerts/alerts.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
-import { CreateProductsComponent } from './core/pages/create-products/create-products.component';
+import { CreateProductsComponent } from './pages/create-products/create-products.component';
 
 
 
