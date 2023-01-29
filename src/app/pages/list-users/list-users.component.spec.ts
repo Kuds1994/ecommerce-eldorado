@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CartDetailsComponent } from './cart-details.component';
+import { ListUsersComponent } from './list-users.component';
 
-describe('CartDetailsComponent', () => {
-  let component: CartDetailsComponent;
-  let fixture: ComponentFixture<CartDetailsComponent>;
+describe('ListUsersComponent', () => {
+  let component: ListUsersComponent;
+  let fixture: ComponentFixture<ListUsersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CartDetailsComponent ]
+      declarations: [ ListUsersComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CartDetailsComponent);
+    fixture = TestBed.createComponent(ListUsersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -20,6 +20,4 @@ describe('CartDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  
 });

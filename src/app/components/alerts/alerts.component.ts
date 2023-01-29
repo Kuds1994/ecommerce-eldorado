@@ -38,7 +38,7 @@ export class AlertsComponent implements OnInit {
 
   }
 
-  setAlerts():void {
+  setAlerts() {
 
     this.alertsService.setNavigation()
     this.alertsService.setShow(false)     

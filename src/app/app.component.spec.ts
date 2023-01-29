@@ -1,3 +1,4 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppComponent } from './app.component';
@@ -17,7 +18,8 @@ describe('AppComponent', () => {
         HeaderComponent,
         FooterComponent
       ],
-      imports: [AppRoutingModule, FontAwesomeModule]
+      imports: [AppRoutingModule, FontAwesomeModule],
+      providers: [HttpClient, HttpHandler]
     }).compileComponents();
   });
 

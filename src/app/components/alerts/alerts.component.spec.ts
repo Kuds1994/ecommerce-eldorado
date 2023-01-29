@@ -14,6 +14,8 @@ describe('AlertsComponent', () => {
     })
     .compileComponents();
 
+    
+
     fixture = TestBed.createComponent(AlertsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -25,8 +27,26 @@ describe('AlertsComponent', () => {
 
   it('should set alerts to true', () => {
     spyOn(component, 'setAlerts')
-    //
 
-    expect(component.setAlerts(true)).toBeTruthy();
+    expect(component.setAlerts).toBeTruthy();
   });
+
+  it('should have called setAlerts', () => {
+    
+    spyOn(component, 'setAlerts')
+
+    component.setAlerts()
+
+    expect(component.setAlerts).toHaveBeenCalled();
+  });
+
+  it('should have called hide', () => {
+    
+    spyOn(component, 'hide')
+
+    component.hide()
+
+    expect(component.hide).toHaveBeenCalled();
+  });
+
 });

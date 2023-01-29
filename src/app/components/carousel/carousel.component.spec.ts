@@ -24,4 +24,18 @@ describe('CarouselComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have a titel', () => {
+
+    component.carouselTitle = 'Carousel Title';
+
+    expect(component.carouselTitle).toBe('Carousel Title');
+  });
+
+  it('should have called function', () => {
+
+    component.productsType = 'Masculino';
+
+    expect(component.productsType).toBe('Masculino');
+  });
 });

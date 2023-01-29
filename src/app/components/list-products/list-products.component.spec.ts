@@ -1,5 +1,6 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ProductDummy } from 'src/app/core/models/product_dummy';
 
 import { ListProductsComponent } from './list-products.component';
 
@@ -21,5 +22,28 @@ describe('ListProductsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should add to cart', () => {
+
+    spyOn(component, 'addToCart')
+
+    const mock: ProductDummy = {
+      id: 1,
+      description: '',
+      title: '',
+      price: 0,
+      discountPercentage: 0,
+      rating: 0,
+      stock: 0,
+      brand: '',
+      category: '',
+      thumbnail: '',
+      images: []
+    }
+
+    component.addToCart(mock);
+
+    expect(component.addToCart).toHaveBeenCalled();
   });
 });

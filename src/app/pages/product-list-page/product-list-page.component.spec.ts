@@ -1,4 +1,7 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
+import { AppRoutingModule } from 'src/app/routing';
 
 import { ProductListPageComponent } from './product-list-page.component';
 
@@ -8,7 +11,9 @@ describe('ProductListPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductListPageComponent ]
+      declarations: [ ProductListPageComponent ],
+      providers: [HttpClient, HttpHandler, ],
+      imports: [AppRoutingModule]
     })
     .compileComponents();
 

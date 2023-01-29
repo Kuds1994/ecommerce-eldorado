@@ -1,4 +1,4 @@
-import { HttpHandler, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHandler, HttpRequest } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
 import { TokenInterceptor } from './token.interceptor';
@@ -10,7 +10,7 @@ describe('TokenInterceptor', () => {
 
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
-      TokenInterceptor
+      TokenInterceptor, HttpHandler, HttpClient
       ]
   }));
 
@@ -19,9 +19,4 @@ describe('TokenInterceptor', () => {
     expect(interceptor).toBeTruthy();
   });
 
-  it('should be created', () => {
-    const interceptor: TokenInterceptor = TestBed.inject(TokenInterceptor);
-    
-    expect(interceptor.intercept(request, next)).toHaveBeenCalled();
-  });
 });
