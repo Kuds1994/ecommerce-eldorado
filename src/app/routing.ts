@@ -12,6 +12,7 @@ import { GuardsGuard } from './core/guards/guard-login/guards.guard';
 import { NotFoundComponent } from './shareds/not-found/not-found.component';
 import { LeavingCartGuard } from './core/guards/guard-leaving-cart/leaving-cart.guard';
 import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
+import { CreateProductsComponent } from './pages/create-products/create-products.component';
 
 const routes: Routes = [
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'cart', component: CartDetailsComponent},
   {path: 'checkout', component: CheckoutComponent, canDeactivate: [LeavingCartGuard]},  
   {path: 'confirmation', component: ConfirmationComponent},
+  {path: 'create-products', component: CreateProductsComponent, canActivate:[GuardsGuard]},
   {path: 'product/:id', component: ProductDetailsComponent},
   {path: 'product-list/:category', component: ProductListPageComponent},
   {path: '**', component: NotFoundComponent}

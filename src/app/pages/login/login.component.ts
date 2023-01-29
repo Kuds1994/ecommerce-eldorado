@@ -21,12 +21,13 @@ export class LoginComponent implements OnInit {
       next: (response) => {
 
         this.authService.setLoggedUser(response.token, response.username)
-        this.router.navigate(['/user']);
+        this.router.navigate(['/']);
 
       },
       error: (error) => {
+
         this.error = 'Dados do usuário incorretos'
-        console.log(error);
+
       }
 
 
