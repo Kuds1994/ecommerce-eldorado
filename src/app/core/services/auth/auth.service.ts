@@ -1,32 +1,31 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { AuthApiService } from './auth-api.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  username: string = ''
+  username: string = '';
 
   private bUsername = new BehaviorSubject<string>('');
   currentUser = this.bUsername.asObservable();
+  logged: boolean = false
 
-  constructor() { }
+  constructor(private authApiService: AuthApiService, private router:Router) { }
 
-  login(username: string, password: string): boolean {
+  login(username: string, password: string) {
 
-    localStorage.setItem('user', username);
-
-    this.setUsername(username)
-
-    return true;
+    return this.authApiService.login(username, password)
 
   }
 
 
-  getUser(){
+  getToken(){
 
-    return localStorage.getItem('user');
+    return localStorage.getItem('token');
 
   }
 
@@ -51,9 +50,15 @@ export class AuthService {
   isLogged(): boolean {
 
     const user = localStorage.getItem('user')
-    return user != undefined ? true : false
+    return user != undefined ? true : false    
 
-    
+  }
+
+  setLoggedUser(token:string, username:string){
+
+    localStorage.setItem('token', token)
+    localStorage.setItem('user', username)
+    this.setUsername(username)
 
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertsService } from 'src/app/core/services/alerts/alerts.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-alerts',
@@ -24,7 +25,10 @@ export class AlertsComponent implements OnInit {
   show: boolean = false
   sair: boolean = true
 
-  constructor(private alertsService: AlertsService){
+  constructor(
+    private alertsService: AlertsService,
+    private router: Router
+    ){
 
     this.alertsService.currentShow.subscribe(s => this.show = s)
 
@@ -34,7 +38,16 @@ export class AlertsComponent implements OnInit {
 
   }
 
-  setAlerts(value:boolean):void {
+  setAlerts():void {
+
+    this.alertsService.setNavigation()
+    this.alertsService.setShow(false)     
+    this.router.navigate([`/`])
+ 
+
+  }
+
+  hide(){
 
     this.alertsService.setShow(false)
 

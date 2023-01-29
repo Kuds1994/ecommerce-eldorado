@@ -12,7 +12,7 @@ export class UserComponent {
 
   constructor(private authService: AuthService) { 
 
-    this.user = this.authService.getUser()!;
+    this.authService.currentUser.subscribe(user => this.user = user)
 
   }
 

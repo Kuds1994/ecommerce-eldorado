@@ -28,7 +28,6 @@ export class CheckoutComponent {
 
   onSelect(option: string){
 
-    console.log(option)
 
     if(option === '0'){
 
@@ -58,8 +57,6 @@ export class CheckoutComponent {
 
   concluirPagamento(){
     
-    console.log(this.disable)
-
     if(!this.disable){
 
       this.router.navigate(['confirmation'])

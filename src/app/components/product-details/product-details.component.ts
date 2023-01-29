@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute  } from '@angular/router';
-import { Product } from 'src/app/core/models/product';
 import { ProductDummy } from 'src/app/core/models/product_dummy';
+import { AuthApiService } from 'src/app/core/services/auth/auth-api.service';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { CartService } from 'src/app/core/services/cart/cart.service';
 import { ProductService } from 'src/app/core/services/product/product.service';
 @Component({
@@ -25,7 +26,10 @@ export class ProductDetailsComponent implements OnInit  {
     images: []
   }; 
 
-  constructor(private route:ActivatedRoute, private productService:ProductService, private cartService:CartService){
+  constructor(
+    private route:ActivatedRoute, 
+    private productService:ProductService, 
+    private cartService:CartService){
 
     const id = this.route.snapshot.paramMap.get('id');
     this.productService.getProductById(Number(id)).subscribe({
@@ -35,7 +39,9 @@ export class ProductDetailsComponent implements OnInit  {
 
       },
       error: (error) =>{
+
         console.log(error)
+        
       }});  
       
   }

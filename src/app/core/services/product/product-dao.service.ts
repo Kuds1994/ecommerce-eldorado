@@ -12,11 +12,20 @@ export class ProductDaoService {
 
   readonly apiUrl = 'https://dummyjson.com';
 
-  public getProducs(){
+  public getProducts(){
     return this.http.get<ResponseAPI>(`${this.apiUrl}/products`)
   }
 
-  public getProducsById(id: number){
+  public getProductsById(id: number){
     return this.http.get<ProductDummy>(`${this.apiUrl}/products/${id}`)
   }
+
+  public getProductsByName(name: string){
+    return this.http.get<ProductDummy[]>(`${this.apiUrl}/products/search?q=${name}`)
+  }
+
+  public getProductsByCategory(name: string){
+    return this.http.get<ResponseAPI>(`${this.apiUrl}/products/category/${name}`)
+  }
+
 }

@@ -7,17 +7,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService:AuthService, private router:Router) {
-    
 
-  }
-  ngOnInit(): void {
 
-  }
+  error: string = ''
+
+  constructor(private authService:AuthService, private router:Router) {}
+  ngOnInit(): void {}
   
-  makeLogin(value: string){
-    this.authService.login(value, "");
-    this.router.navigate(['user'])
+  makeLogin(username: string, password:string){
+
+    this.authService.login(username, password).subscribe({
+    
+      next: (response) => {
+
+        this.authService.setLoggedUser(response.token, response.username)
+        this.router.navigate(['/user']);
+
+      },
+      error: (error) => {
+        this.error = 'Dados do usuário incorretos'
+        console.log(error);
+      }
+
+
+    });
+    
   }
 
 }

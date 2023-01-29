@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs';
 import { Product } from 'src/app/core/models/product';
 import { ProductDummy } from '../../models/product_dummy';
 import { ProductDaoService } from './product-dao.service';
@@ -129,7 +129,7 @@ export class ProductService {
 
 
   getProducts() {
-    return this.productDaoService.getProducs().pipe(
+    return this.productDaoService.getProducts().pipe(
       map(source => {
         let list = source.products        
         .map((product: ProductDummy) => ({
@@ -144,18 +144,38 @@ export class ProductService {
   getProductByGender(gender: string){
   
     const products = this.products.filter(f => f.gender == gender)
-
     return products;
   
   }
   
   getProductById(id: number){
   
-    return this.productDaoService.getProducsById(id).pipe(
+    return this.productDaoService.getProductsById(id).pipe(
       map(source => { 
         let productDummy: ProductDummy = {...source}   
         return productDummy
       })
     )
   }
+
+  getProductsByName(name: string){
+
+    return this.productDaoService.getProductsByName(name)
+
+  }
+
+  getProductsByCategories(name: string){
+
+
+    return this.productDaoService.getProductsByCategory(name).pipe(
+      map(source => {
+        let list = source.products             
+        .map((product: ProductDummy) => ({
+          ...product
+        }))
+        return list;
+      })
+    )    
+  }   
+  
 }

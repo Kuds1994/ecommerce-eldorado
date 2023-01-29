@@ -23,7 +23,9 @@ import { ConfirmationComponent } from './pages/confirmation/confirmation.compone
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { SwiperModule } from "swiper/angular";
 import { AlertsComponent } from './components/alerts/alerts.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { TokenInterceptor } from './core/interceptors/token.interceptor';
+import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
 
 
 
@@ -45,6 +47,7 @@ import { HttpClientModule } from '@angular/common/http'
     ConfirmationComponent,
     CarouselComponent,
     AlertsComponent,
+    ProductListPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,9 @@ import { HttpClientModule } from '@angular/common/http'
     CommonModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

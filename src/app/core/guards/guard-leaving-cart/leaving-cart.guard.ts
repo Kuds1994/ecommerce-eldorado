@@ -19,9 +19,15 @@ export class LeavingCartGuard implements CanDeactivate<CheckoutComponent> {
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-    this.alertService.setShow(true)    
+    let exit = this.alertService.getExit();
 
-    return this.alertService.currentExit;
+    if(!exit){
+      console.log('apareceu')
+      this.alertService.setShow(true) 
+    }
+         
+
+    return this.alertService.getExit();
   }
   
 }

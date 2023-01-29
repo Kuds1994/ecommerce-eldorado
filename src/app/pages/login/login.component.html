@@ -10,7 +10,8 @@
             <label for="password">Senha</label>
             <input type="password" #password>
         </div>
-        <button class="login-button" (click)="makeLogin(user.value)">Logar</button>
+        <span [ngStyle]="{'color': 'red'}">{{error}}</span>
+        <button class="login-button" (click)="makeLogin(user.value, password.value)">Logar</button>
     </div>
 
     
