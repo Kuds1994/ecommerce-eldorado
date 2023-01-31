@@ -1,0 +1,42 @@
+.signin{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.signin-container{
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    padding: 30px;
+}
+
+.signin input, .signin label{
+    display: block;
+}
+
+.extra-large{
+    width: 100%;
+}
+
+.large{
+    width: 70%;
+}
+
+.medium{
+
+    width: 40%;
+
+}
+
+.small{
+    width: 20%;
+}
+
+.inline{
+    display: inline-block;
+}
+

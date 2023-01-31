@@ -13,6 +13,10 @@
         <span [ngStyle]="{'color': 'red'}">{{error}}</span>
         <button class="login-button" (click)="makeLogin(user.value, password.value)">Logar</button>
     </div>
+    <div class="login-signin">
+        <h1>Ainda não possui cadastro?</h1>        
+        <a class="login-signin-link" routerLink="/signin">Fazer cadastro</a>
+    </div>
 
     
 </div>
