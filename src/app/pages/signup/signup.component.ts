@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CepService } from 'src/app/core/services/cep/cep.service';
 import { FormControl } from '@angular/forms';
+import { User } from 'src/app/core/models/user';
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +10,9 @@ import { FormControl } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
 
-  
+  nome = new FormControl('')
+  email = new FormControl('')
+  telefone = new FormControl('')
   cep = new FormControl('')
   rua = new FormControl('')
   num = new FormControl('')
@@ -51,6 +54,36 @@ export class SignupComponent implements OnInit {
       
 
     })
+
+  }
+
+  saveUser(){
+    let user: User = {
+      nome: '',
+      email: '',
+      telefone: '',
+      cep: '',
+      rua: '',
+      num: '',
+      complemento: '',
+      bairro: '',
+      cidade: '',
+      estado: '',
+      senha: ''
+    }
+
+    user.nome = this.nome.value!
+    user.email = this.email.value!
+    user.telefone = this.telefone.value!
+    user.cep = this.cep.value!
+    user.rua = this.rua.value!
+    
+
+
+    this.rua.setValue(response.logradouro)
+    this.bairro.setValue(response.bairro)
+    this.cidade.setValue(response.localidade)
+    this.estado.setValue(response.uf)
 
   }
 

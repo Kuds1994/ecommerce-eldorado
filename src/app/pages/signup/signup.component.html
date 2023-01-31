@@ -5,15 +5,15 @@
             <label for="name">
                 Nome completo
             </label>
-            <input type="text" class="large" name="name" id="name">
+            <input type="text" [formControl]="nome"  class="large" name="name" id="name">
             <label for="email">
                 Email
             </label>
-            <input type="text" class="medium" name="email">
+            <input type="text" [formControl]="email" class="medium" name="email">
             <label for="telefone">
-                telefone
+                Telefone
             </label>
-            <input type="email" name="telefone" id="telefone">
+            <input type="text" [formControl]="telefone"  name="telefone" id="telefone">
         </div>
         <div class="adress">
             <label for="cep">
@@ -31,7 +31,7 @@
                     <label for="numero" >
                         Número
                     </label>
-                    <input type="text"   #numero name="numero" id="numero">
+                    <input type="text" [formControl]="num"  #numero name="numero" id="numero">
                 </div>
             </div>
             
@@ -39,7 +39,7 @@
                 <label for="complemento">
                     Complemento
                 </label>
-                <input type="text"  name="complemento" id="complemento">
+                <input type="text" [formControl]="complemento"  name="complemento" id="complemento">
             </div>
             <div class="inline">
                 <label for="bairro">
@@ -60,20 +60,18 @@
                 <input type="text"  name="estado" [formControl]="estado" id="estado">
             </div> 
         </div>
-        <label for="senha">
+        <label for="senha" >
             Senha
         </label>
-        <input type="password" name="senha" id="senha">
+        <input type="password" [formControl]="senha"  name="senha" id="senha">
         <label for="senha2">
             Confirmar senha
         </label>
-        <input type="password" name="senha2" id="senha2">
-        <span></span>
+        <input type="password" name="senha2" [formControl]="senha2" id="senha2">
         <label for="termos">
             Aceite os termos e condições
         </label>
         <input type="checkbox" name="termos" id="termos">
-        <span></span>
         <button>Cadastrar</button>
 
     </form>
