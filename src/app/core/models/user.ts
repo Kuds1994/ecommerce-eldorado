@@ -1,5 +1,5 @@
 export interface User {
-
+  id: number
   nome: string
   email: string
   telefone: string
@@ -13,5 +13,6 @@ export interface User {
   senha: string
   termos: boolean
   compartilhar: boolean
+  admin: boolean
 
 }

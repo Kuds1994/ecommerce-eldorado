@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { AuthApiService } from './auth-api.service';
 import { Router } from '@angular/router';
+import { User } from '../../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class AuthService {
   username: string = '';
 
   private bUsername = new BehaviorSubject<string>('');
+
   currentUser = this.bUsername.asObservable();
   logged: boolean = false
 
@@ -31,12 +33,17 @@ export class AuthService {
 
   getUsername(){    
 
-    const user = String(localStorage.getItem('user'));
+    const user = localStorage.getItem('username');
 
-    if(user !== 'null'){
+
+    if(user){
+
       return user
+
     }else{
-      return ''  
+
+      return null  
+
     }        
 
   }

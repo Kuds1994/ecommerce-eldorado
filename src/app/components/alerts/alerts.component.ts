@@ -43,8 +43,7 @@ export class AlertsComponent implements OnInit {
     this.alertsService.setNavigation()
     this.alertsService.setShow(false)     
     this.router.navigate([`/`])
- 
-
+    
   }
 
   hide(){

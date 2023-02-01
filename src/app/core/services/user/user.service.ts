@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { filter } from 'rxjs';
 import { User } from '../../models/user';
 
 @Injectable({
@@ -23,14 +24,53 @@ export class UserService {
 
     }    
 
-    localStorage.setItem('user', JSON.stringify(list))
+    localStorage.setItem('userList', JSON.stringify(list))
 
   }
 
   getUser(): User[]{
 
-    let user = localStorage.getItem('user')
+    let user = localStorage.getItem('userList')
+
+    if(!user){
+
+      return []
+
+    }
+
     return JSON.parse(user!)
+
+  }
+
+  getEmail(email: string): boolean {
+
+    let user = this.getUser().filter(u => u.email === email)
+
+    if(user.length > 0){
+
+      return true
+
+    }
+
+    return false
+
+  }
+
+  updateUser(user: User){
+    
+    let list = this.getUser()
+
+    const p = list.findIndex((p) =>
+
+      user.id == p.id
+
+    )
+  
+    list.splice(p, 1)  
+    list.push(user)
+ 
+
+    localStorage.setItem('userList', JSON.stringify(list))
 
   }
 }
