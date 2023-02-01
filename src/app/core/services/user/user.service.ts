@@ -10,11 +10,24 @@ export class UserService {
 
   saveUser(user: User){
 
-    localStorage.setItem('user', JSON.stringify(user))
+    let list = this.getUser()
+
+    if(list){
+
+      list.push(user)
+      
+    } else {
+
+      list = []
+      list.push(user)
+
+    }    
+
+    localStorage.setItem('user', JSON.stringify(list))
 
   }
 
-  getUser(): User{
+  getUser(): User[]{
 
     let user = localStorage.getItem('user')
     return JSON.parse(user!)

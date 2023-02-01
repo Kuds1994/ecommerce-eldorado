@@ -11,5 +11,7 @@ export interface User {
   cidade: string
   estado: string
   senha: string
+  termos: boolean
+  compartilhar: boolean
 
 }
