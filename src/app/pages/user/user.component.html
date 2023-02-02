@@ -32,140 +32,78 @@
             </label>
             <input type="checkbox" name="newsletter" id="newsletter" formControlName="newsletter">  
         </div>
-        <button>Atualizar informações</button>
-        </form>
-        <div class="spacer"></div>
-        <form [formGroup]="formularioEndereco" (ngSubmit)="saveAddress(0)">  
-            <h1>Meus endereços</h1>
-            <div class="adress">
-                <label for="cep">
-                    CEP
-                </label>
-                <input type="text" name="cep" id="cep" formControlName="cep" (focusout)="preencheCEP()">
-                <div *ngIf="formularioEndereco.get('cep')?.errors && (formularioEndereco.get('cep')?.touched || formularioEndereco.get('cep')?.dirty)"
-                    style="color: red;">
-                        Favor preencha o seu cep
-                </div>
-                        <label for="rua">
+        <button>Atualizar informações</button>        
+        <h1>Meus endereços</h1>
+            <ng-container formArrayName="formEnderecos">   
+                <ng-container *ngFor="let enderecos of fb.controls; let i = index">  
+
+                   <div class="address" [formGroupName]="i">
+
+                        <label for="cep-{{i}}">
+                            CEP
+                        </label>
+                        <input type="text" name="cep-{{i}}" id="cep-{{i}}" formControlName="cep" (focusout)="preencheCEP(i)">
+                        <div *ngIf="enderecos.get('cep')?.errors && (enderecos.get('cep')?.touched || enderecos.get('cep')?.dirty)"
+                            style="color: red;">
+                                Favor preencha o seu cep
+                        </div>
+
+                        <label for="rua-{{i}}">
                             Rua
                         </label>            
-                        <input type="text" name="rua" class="medium" formControlName="rua" id="rua">
-                        <div *ngIf="formularioEndereco.get('rua')?.errors && (formularioEndereco.get('rua')?.touched || formularioEndereco.get('rua')?.dirty)"
+                        <input type="text-{{i}}" name="rua-{{i}}" class="medium" formControlName="rua" id="rua-{{i}}">
+                        <div *ngIf="enderecos.get('rua')?.errors && (enderecos.get('rua')?.touched || enderecos.get('rua')?.dirty)"
                             style="color: red;">
                         Favor preencha a sua rua
                         </div>
 
-                        <label for="numero" >
+                        <label for="numero-{{i}}" >
                             Número
                         </label>
-                        <input type="text" formControlName="num" class="small"  #numero name="numero" id="numero">
-                        <div *ngIf="formularioEndereco.get('num')?.errors && (formularioEndereco.get('num')?.touched || formularioEndereco.get('num')?.dirty)"
+                        <input type="text-{{i}}" formControlName="num" class="small"  #numero name="numero-{{i}}" id="numero-{{i}}">
+                        <div *ngIf="enderecos.get('num')?.errors && (enderecos.get('num')?.touched || enderecos.get('num')?.dirty)"
                             style="color: red;">
                                 Favor preencha o numero da sua casa
-                        </div>      
-                    <label for="complemento">
-                        Complemento
-                    </label>
-                    <input type="text" formControlName="complemento" name="complemento" id="complemento">
-                    <label for="bairro">
-                        Bairro
-                    </label>
-                    <input type="text" name="bairro" formControlName="bairro" id="bairro">
-                    <div *ngIf="formularioEndereco.get('bairro')?.errors && (formularioEndereco.get('bairro')?.touched || formularioEndereco.get('bairro')?.dirty)"
-                    style="color: red;">
-                        Favor preencha o seu bairro
-                    </div>
+                        </div>    
 
-
-                    <label for="cidade">
-                        Cidade
-                    </label>
-                    <input type="text"  name="cidade" formControlName="cidade" id="cidade">
-                    <div *ngIf="formularioEndereco.get('cidade')?.errors && (formularioEndereco.get('cidade')?.touched || formularioEndereco.get('cidade')?.dirty)"
-                    style="color: red;">
-                        Favor preencha o seu bairro
-                    </div>
-    
-                    <label for="estado">
-                        Estado
-                    </label>
-                    <input type="text" class="small"  name="estado" formControlName="estado" id="estado">
-                    <div *ngIf="formularioEndereco.get('estado')?.errors && (formularioEndereco.get('estado')?.touched || formularioEndereco.get('estado')?.dirty)"
-                    style="color: red;">
-                        Favor preencha o seu bairro
-                    </div>
-                </div>
-                <button>Atualizar endereço principal</button>
-            </form>
-            <div class="spacer"></div>
-            <h1>Endereço secundário</h1>
-            <form [formGroup]="formularioEnderecoSecundario" (ngSubmit)="saveAddress(1)" *ngIf="hidden; else empty">    
-                <div class="spacer"></div>
-                <h1>Endereço secundário</h1>
-                <div class="adress">
-                    <label for="cep">
-                        CEP
-                    </label>
-                    <input type="text" name="cep" id="cep" formControlName="cep" (focusout)="preencheCEP()">
-                    <div *ngIf="formularioEnderecoSecundario.get('cep')?.errors && (formularioEnderecoSecundario.get('cep')?.touched || formularioEnderecoSecundario.get('cep')?.dirty)"
-                        style="color: red;">
-                            Favor preencha o seu cep
-                    </div>
-                            <label for="rua">
-                                Rua
-                            </label>            
-                            <input type="text" name="rua" class="medium" formControlName="rua" id="rua">
-                            <div *ngIf="formularioEnderecoSecundario.get('rua')?.errors && (formularioEnderecoSecundario.get('rua')?.touched || formularioEnderecoSecundario.get('rua')?.dirty)"
-                                style="color: red;">
-                            Favor preencha a sua rua
-                            </div>
-    
-                            <label for="numero" >
-                                Número
-                            </label>
-                            <input type="text" formControlName="num" class="small"  #numero name="numero" id="numero">
-                            <div *ngIf="formularioEnderecoSecundario.get('num')?.errors && (formularioEnderecoSecundario.get('num')?.touched || formularioEnderecoSecundario.get('num')?.dirty)"
-                                style="color: red;">
-                                    Favor preencha o numero da sua casa
-                            </div>      
-                        <label for="complemento">
+                        <label for="complemento-{{i}}">
                             Complemento
                         </label>
-                        <input type="text" formControlName="complemento" name="complemento" id="complemento">
-                        <label for="bairro">
+                        <input type="text" formControlName="complemento" name="complemento-{{i}}" id="complemento-{{i}}">
+                        <label for="bairro-{{i}}">
                             Bairro
                         </label>
-                        <input type="text" name="bairro" formControlName="bairro" id="bairro">
-                        <div *ngIf="formularioEnderecoSecundario.get('bairro')?.errors && (formularioEnderecoSecundario.get('bairro')?.touched || formularioEnderecoSecundario.get('bairro')?.dirty)"
-                        style="color: red;">
+                        <input type="text" name="bairro-{{i}}" formControlName="bairro" id="bairro-{{i}}">
+                        <div *ngIf="enderecos.get('bairro')?.errors && (enderecos.get('bairro')?.touched || enderecos.get('bairro')?.dirty)"
+                            style="color: red;">
                             Favor preencha o seu bairro
-                        </div>    
-    
-                        <label for="cidade">
+                        </div>
+                        <label for="cidade-{{i}}">
                             Cidade
                         </label>
-                        <input type="text"  name="cidade" formControlName="cidade" id="cidade">
-                        <div *ngIf="formularioEnderecoSecundario.get('cidade')?.errors && (formularioEnderecoSecundario.get('cidade')?.touched || formularioEnderecoSecundario.get('cidade')?.dirty)"
-                        style="color: red;">
+                        <input type="text"  name="cidade-{{i}}" formControlName="cidade" id="cidade-{{i}}">
+                        <div *ngIf="enderecos.get('cidade')?.errors && (enderecos.get('cidade')?.touched || enderecos.get('cidade')?.dirty)"
+                            style="color: red;">
                             Favor preencha o seu bairro
                         </div>
-        
-                        <label for="estado">
+            
+                        <label for="estado-{{i}}">
                             Estado
                         </label>
-                        <input type="text" class="small"  name="estado" formControlName="estado" id="estado">
-                        <div *ngIf="formularioEnderecoSecundario.get('estado')?.errors && (formularioEnderecoSecundario.get('estado')?.touched || formularioEnderecoSecundario.get('estado')?.dirty)"
+                        <input type="text" class="small"  name="estado-{{i}}" formControlName="estado" id="estado-{{i}}">
+                        <div *ngIf="enderecos.get('estado')?.errors && (enderecos.get('estado')?.touched || enderecos.get('estado')?.dirty)"
                         style="color: red;">
-                            Favor preencha o seu bairro
+                                Favor preencha o seu bairro
                         </div>
+                        <button (click)="saveAddress(i)">Salvar endereço</button>
                     </div>
-                    <button>Atualizar endereço sécundario</button>
-                </form>
-                <ng-template #empty>
-
-                    <button>Cadastrar endereço secundario</button>
-
-                </ng-template>
-    </div>
+                    
+                    
+                    <div class="spacer"></div>
+                
+                </ng-container>
+            </ng-container>     
+        <button (click)="addAddress()">Adicionar Endereço</button>
+    </form>
 
 </div>

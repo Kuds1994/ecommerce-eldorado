@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { filter } from 'rxjs';
+import { Address } from '../../models/address';
 import { User } from '../../models/user';
 
 @Injectable({
@@ -74,18 +75,32 @@ export class UserService {
 
   }
 
-  updateAddress(user: User){
-    
+  updateAddress(user: number, address: Address){
+  
     let list = this.getUsers()
 
     const p = list.findIndex((p) =>
 
-      user.id == p.id
+      user == p.id
 
     )
+
+    const a = list[p].address.findIndex((p) =>
+
+      address.id == p.id
+
+    )   
+
+    if(a == -1){
+
+      list[p].address.push(address)
+
+    } else {    
   
-    list.splice(p, 1)  
-    list.push(user)
+      list[p].address.splice(a, 1)  
+      list[p].address.push(address)
+
+    }
  
 
     localStorage.setItem('userList', JSON.stringify(list))
@@ -117,6 +132,12 @@ export class UserService {
     )
 
     return list[p]
+
+  }
+
+  saveAddress(number: number){
+
+    //this.saveAddress
 
   }
 }

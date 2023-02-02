@@ -90,6 +90,7 @@ export class SignupComponent implements OnInit {
     }
 
     let address: Address[] = [{
+      id: -1,
       cep: '',
       rua: '',
       num: '',
@@ -121,6 +122,7 @@ export class SignupComponent implements OnInit {
     user.address[0].estado =  this.formulario.controls['estado'].value    
     user.address[0].num =  this.formulario.controls['num'].value
     user.address[0].complemento =  this.formulario.controls['complemento'].value
+    user.address[0].id = user.address.length
     user.senha = this.formulario.controls['senha'].value
     user.termos = this.formulario.controls['termos'].value
     user.compartilhar = this.formulario.controls['compartilhar'].value

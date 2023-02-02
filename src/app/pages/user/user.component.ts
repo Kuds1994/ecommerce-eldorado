@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Address } from 'src/app/core/models/address';
 import { User } from 'src/app/core/models/user';
@@ -16,37 +16,31 @@ export class UserComponent {
 
   hidden = false
 
-  formulario: FormGroup = this.formBuilder.group({
+  formularioEndereco: FormGroup = this.formBuilder.group({
+
+    cep: ['', Validators.required],
+    rua: ['', Validators.required],
+    num: ['', Validators.required],
+    complemento: [''],
+    bairro: ['', Validators.required],
+    cidade: ['', Validators.required],
+    estado: ['', Validators.required],
+
+  })
+
+  formulario: FormGroup = this.formBuilder.group({    
+
     nome: ['', Validators.required],
     email: ['', [Validators.required, Validators.email, Validators.min(10)]],
     telefone: ['', Validators.required],
-    
+    formEnderecos: this.formBuilder.array([]),
     termos: [false, Validators.required],
     compartilhar: [false],
     newsletter: [false]
-  })
 
-  formularioEndereco: FormGroup = this.formBuilder.group({
-    cep: ['', Validators.required],
-    rua: ['', Validators.required],
-    num: ['', Validators.required],
-    complemento: [''],
-    bairro: ['', Validators.required],
-    cidade: ['', Validators.required],
-    estado: ['', Validators.required],
   })
-
-  formularioEnderecoSecundario: FormGroup = this.formBuilder.group({
-    cep: ['', Validators.required],
-    rua: ['', Validators.required],
-    num: ['', Validators.required],
-    complemento: [''],
-    bairro: ['', Validators.required],
-    cidade: ['', Validators.required],
-    estado: ['', Validators.required],
-  })
-
   address: Address[] = [{
+    id: -1,
     cep: '',
     rua: '',
     num: '',
@@ -57,7 +51,7 @@ export class UserComponent {
   }]
 
   user: User = {
-    id: 0,
+    id: -1,
     nome: '',
     email: '',
     telefone: '',
@@ -75,16 +69,16 @@ export class UserComponent {
 
   }
 
-  preencheCEP(){
+  preencheCEP(i: number){
 
-    this.cepService.getCEP(this.formularioEndereco.controls['cep'].value).subscribe({
+    this.cepService.getCEP(this.fb.at(i).get('cep')!.value).subscribe({
 
-      next: (response) =>{
+      next: (response) => {
 
-        this.formularioEndereco.controls['rua'].setValue(response.logradouro)
-        this.formularioEndereco.controls['bairro'].setValue(response.bairro)
-        this.formularioEndereco.controls['cidade'].setValue(response.localidade)
-        this.formularioEndereco.controls['estado'].setValue(response.uf)     
+        this.fb.controls[i].get('rua')!.setValue(response.logradouro)
+        this.fb.controls[i].get('bairro')!.setValue(response.bairro)
+        this.fb.controls[i].get('cidade')!.setValue(response.localidade)
+        this.fb.controls[i].get('estado')!.setValue(response.uf)     
 
       },
 
@@ -95,6 +89,18 @@ export class UserComponent {
       }      
 
     })
+
+  }
+
+  get fb() {
+    
+    return this.formulario.controls["formEnderecos"] as FormArray
+
+  }
+
+  getControls(id:number) {
+    
+    return this.fb.at(id) as FormGroup
 
   }
 
@@ -123,35 +129,99 @@ export class UserComponent {
     this.formulario.controls['nome'].setValue(user.nome)
     this.formulario.controls['email'].setValue(user.email)
     this.formulario.controls['telefone'].setValue(user.telefone)
-    this.formularioEndereco.controls['cep'].setValue(user.address[0].cep)
-    this.formularioEndereco.controls['rua'].setValue(user.address[0].rua)
-    this.formularioEndereco.controls['num'].setValue(user.address[0].num)
-    this.formularioEndereco.controls['complemento'].setValue(user.address[0].complemento)
-    this.formularioEndereco.controls['bairro'].setValue(user.address[0].bairro)
-    this.formularioEndereco.controls['cidade'].setValue(user.address[0].cidade)
-    this.formularioEndereco.controls['estado'].setValue(user.address[0].estado)
 
-    if(user.address.length > 1){
+    user.address.forEach((address, i) => {     
 
-      this.formularioEnderecoSecundario.controls['cep'].setValue(user.address[1].cep)
-      this.formularioEnderecoSecundario.controls['rua'].setValue(user.address[1].rua)
-      this.formularioEnderecoSecundario.controls['num'].setValue(user.address[1].num)
-      this.formularioEnderecoSecundario.controls['complemento'].setValue(user.address[1].complemento)
-      this.formularioEnderecoSecundario.controls['bairro'].setValue(user.address[1].bairro)
-      this.formularioEnderecoSecundario.controls['cidade'].setValue(user.address[1].cidade)
-      this.formularioEnderecoSecundario.controls['estado'].setValue(user.address[1].estado)
+      this.fb.push(this.formBuilder.group({
+
+          cep: ['', Validators.required],
+          rua: ['', Validators.required],
+          num: ['', Validators.required],
+          complemento: [''],
+          bairro: ['', Validators.required],
+          cidade: ['', Validators.required],
+          estado: ['', Validators.required],
+    
+      }))
+
+      this.getControls(i).get('cep')?.setValue(address.cep) 
+      this.getControls(i).get('rua')?.setValue(address.rua)
+      this.getControls(i).get('num')?.setValue(address.num)
+      this.getControls(i).get('complemento')?.setValue(address.complemento)
+      this.getControls(i).get('bairro')?.setValue(address.bairro)
+      this.getControls(i).get('cidade')?.setValue(address.cidade)
+      this.getControls(i).get('estado')?.setValue(address.estado)
+
+    })
 
 
 
-    }
+  }
+
+  getUser(){
+
+    this.user.nome = this.formulario.controls['nome'].value
+    this.user.email = this.formulario.controls['email'].value
+    this.user.telefone = this.formulario.controls['telefone'].value
+    
+
+    this.fb.controls.forEach((controls, i) => {
+
+      this.user.address[i].bairro = controls.value['bairro']
+      this.user.address[i].cep = controls.value['cep']
+      this.user.address[i].rua = controls.value['rua']
+      this.user.address[i].complemento = controls.value['complemento']
+      this.user.address[i].num = controls.value['num']
+      this.user.address[i].cidade = controls.value['cidade']
+      this.user.address[i].estado = controls.value['estado']      
+
+    })
 
   }
 
   saveAddress(endereco: number){
 
-    this.userService.updateUser(this.user)
+    this.getUser()
+
+    let address = this.user.address[endereco]
+
+    this.userService.updateAddress(this.user.id, address)
 
   }
+
+  addAddress(){
+
+    let address: Address = {
+      id: this.user.address.length + 1,
+      cep: '',
+      rua: '',
+      num: '',
+      complemento: '',
+      bairro: '',
+      cidade: '',
+      estado: ''
+    }
+
+    let addressForm = this.formBuilder.group({
+      cep: ['', Validators.required],
+      rua: ['', Validators.required],
+      num: ['', Validators.required],
+      complemento: [''],
+      bairro: ['', Validators.required],
+      cidade: ['', Validators.required],
+      estado: ['', Validators.required],
+    })  
+
+    this.fb.push(addressForm)
+    this.user.address.push(address)
+
+  }
+
+  mostrar(asd: any){
+
+    console.log(asd)
+  }
   
+
 
 }
