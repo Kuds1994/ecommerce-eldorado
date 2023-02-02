@@ -16,23 +16,12 @@ export class LoginComponent implements OnInit {
   
   makeLogin(username: string, password:string){
 
-    this.authService.login(username, password).subscribe({
-    
-      next: (response) => {
+    if(this.authService.loginStorage(username, password)){
 
-        this.authService.setLoggedUser(response.token, response.username)
-        this.router.navigate(['/']);
+      this.router.navigate(['/user']);
 
-      },
-      error: (error) => {
+    }
 
-        this.error = 'Dados do usuário incorretos'
-
-      }
-
-
-    });
-    
   }
 
 }

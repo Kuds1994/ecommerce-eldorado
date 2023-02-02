@@ -11,7 +11,7 @@ export class UserService {
 
   saveUser(user: User){
 
-    let list = this.getUser()
+    let list = this.getUsers()
 
     if(list){
 
@@ -28,7 +28,7 @@ export class UserService {
 
   }
 
-  getUser(): User[]{
+  getUsers(): User[]{
 
     let user = localStorage.getItem('userList')
 
@@ -44,7 +44,7 @@ export class UserService {
 
   getEmail(email: string): boolean {
 
-    let user = this.getUser().filter(u => u.email === email)
+    let user = this.getUsers().filter(u => u.email === email)
 
     if(user.length > 0){
 
@@ -58,7 +58,7 @@ export class UserService {
 
   updateUser(user: User){
     
-    let list = this.getUser()
+    let list = this.getUsers()
 
     const p = list.findIndex((p) =>
 
@@ -71,6 +71,52 @@ export class UserService {
  
 
     localStorage.setItem('userList', JSON.stringify(list))
+
+  }
+
+  updateAddress(user: User){
+    
+    let list = this.getUsers()
+
+    const p = list.findIndex((p) =>
+
+      user.id == p.id
+
+    )
+  
+    list.splice(p, 1)  
+    list.push(user)
+ 
+
+    localStorage.setItem('userList', JSON.stringify(list))
+
+  }
+
+  getUser(token: number): User{
+    
+    let list = this.getUsers()
+
+    const p = list.findIndex((p) =>
+
+      token == p.id
+
+    )
+  
+    return list[p]
+
+  }
+
+  loginStorage(email: string, password: string): User{
+    
+    let list = this.getUsers()
+
+    const p = list.findIndex((p) =>
+
+      p.email === email && p.senha === password
+
+    )
+
+    return list[p]
 
   }
 }

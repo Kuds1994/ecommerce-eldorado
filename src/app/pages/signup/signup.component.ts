@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { User } from 'src/app/core/models/user';
 import { UserService } from 'src/app/core/services/user/user.service'
 import { Router } from '@angular/router';
+import { Address } from 'src/app/core/models/address';
 
 @Component({
   selector: 'app-signup',
@@ -77,44 +78,49 @@ export class SignupComponent implements OnInit {
 
     }
 
+    
+
     let id = 1
 
-    if(this.userService.getUser()){
+    if(this.userService.getUsers()){
 
-      console.log(this.userService.getUser().length)
-      id = this.userService.getUser().length + 1
+      console.log(this.userService.getUsers().length)
+      id = this.userService.getUsers().length + 1
 
     }
 
-    let user: User = {
-
-      id,
-      nome: '',
-      email: '',
-      telefone: '',
+    let address: Address[] = [{
       cep: '',
       rua: '',
       num: '',
       complemento: '',
       bairro: '',
       cidade: '',
-      estado: '',
+      estado: ''
+    }]
+
+    let user: User = {
+      id,
+      nome: '',
+      email: '',
+      telefone: '',
       senha: '',
       termos: false,
       compartilhar: false,
-      admin: false
-
+      admin: false,
+      address: address
     }
 
     user.nome = this.formulario.controls['nome'].value  
     user.email = email  
     user.telefone = this.formulario.controls['telefone'].value
-    user.rua = this.formulario.controls['rua'].value
-    user.bairro = this.formulario.controls['bairro'].value
-    user.cidade =  this.formulario.controls['cidade'].value
-    user.estado =  this.formulario.controls['estado'].value
-    user.cidade =  this.formulario.controls['cidade'].value
-    user.estado =  this.formulario.controls['estado'].value
+    user.address[0].cep = this.formulario.controls['cep'].value
+    user.address[0].rua = this.formulario.controls['rua'].value
+    user.address[0].bairro = this.formulario.controls['bairro'].value
+    user.address[0].cidade =  this.formulario.controls['cidade'].value
+    user.address[0].estado =  this.formulario.controls['estado'].value    
+    user.address[0].num =  this.formulario.controls['num'].value
+    user.address[0].complemento =  this.formulario.controls['complemento'].value
     user.senha = this.formulario.controls['senha'].value
     user.termos = this.formulario.controls['termos'].value
     user.compartilhar = this.formulario.controls['compartilhar'].value
