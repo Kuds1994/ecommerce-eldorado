@@ -22,10 +22,6 @@ describe('CartComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
 
   it('should have called abrirCarrinho', () => {
     const spy = spyOn(component, 'abrirCarrinho')

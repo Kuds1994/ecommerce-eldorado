@@ -75,6 +75,29 @@ export class UserService {
 
   }
 
+  updateFieldUser(id: number, field: string, value: any) {
+    
+    let list = this.getUsers()
+
+    const p = list.findIndex((p) =>
+
+      id == p.id
+
+    )
+  
+    let user = list[p]  
+    
+    user[field] = value
+
+    list.push()
+ 
+
+    localStorage.setItem('userList', JSON.stringify(list))
+
+  }
+
+  
+
   updateAddress(user: number, address: Address){
   
     let list = this.getUsers()

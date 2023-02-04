@@ -1,6 +1,13 @@
 <div class="signin">
     <div class="signin-container">
-    <h1>Dados do usuário</h1>
+
+    <div class="signin-container-header">
+        <h1>Dados do usuário</h1>
+        <div>
+            <a *ngIf="user.admin" routerLink="/admin">Acessar tela administrador</a>
+            <a (click)="logout()">Logout</a>
+        </div>
+    </div>
     <form [formGroup]="formulario" (ngSubmit)="saveUser()">        
         <div class="personal-data ">
             <label for="name">
@@ -15,9 +22,16 @@
                 Email
             </label>
             <input type="text" formControlName="email" class="medium" name="email">
-            <div *ngIf="formulario.get('email')?.errors && (formulario.get('email')?.touched || formulario.get('email')?.dirty)"
+            <div *ngIf="formulario.get('email')?.errors?.['required'] && (formulario.get('email')?.touched || formulario.get('email')?.dirty)" style="color: red;">
+                Preenche o campo de e-mail
+            </div>
+            <div *ngIf="formulario.get('email')?.errors?.['email'] && (formulario.get('email')?.touched || formulario.get('email')?.dirty)"
                 style="color: red;">
-                    Favor preencha o seu email
+                Não esta no formato correto
+            </div>
+            <div *ngIf="formulario.get('email')?.errors?.['hasAEmail'] && (formulario.get('email')?.touched || formulario.get('email')?.dirty)"
+                style="color: red;">
+                Já existe este e-mail cadastrado 
             </div>
             <label for="telefone">
                 Telefone

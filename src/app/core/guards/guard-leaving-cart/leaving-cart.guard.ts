@@ -21,11 +21,19 @@ export class LeavingCartGuard implements CanDeactivate<CheckoutComponent> {
     
     let exit = this.alertService.getExit();
 
-    if(!exit){
-      console.log('apareceu')
+    if(!exit && nextState?.url !== '/confirmation'){
+
       this.alertService.setShow(true) 
+
+    } else {
+
+      this.alertService.setExit(true)
+
     }
-         
+
+    
+
+
 
     return this.alertService.getExit();
   }

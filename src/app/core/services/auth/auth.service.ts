@@ -31,7 +31,7 @@ export class AuthService {
 
     if(user){
 
-      this.setLoggedUser(user.id, user.nome)
+      this.setLoggedUser(user.id, user.nome, user.admin)
       return true
 
     }
@@ -49,7 +49,7 @@ export class AuthService {
 
   getUsername(){    
 
-    const user = localStorage.getItem('username');
+    const user = localStorage.getItem('user');
 
 
     if(user){
@@ -77,27 +77,46 @@ export class AuthService {
 
   }
 
+  logout(){
+
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    localStorage.removeItem('ad')
+    this.setUsername('')    
+  
+  }
+
   getUserLogged(){
     
     const user = localStorage.getItem('user')
     const token = localStorage.getItem('token')
+    const admin = localStorage.getItem('ad')
 
-    console.log('asdasdsadd')
-
-    if(user && token){
+    if(user && token && admin){
       
-      this.setLoggedUser(Number(token), user)
+      this.setUsername(user)
 
     }
 
   }
 
   
-  setLoggedUser(token:number, username:string){
+  setLoggedUser(token:number, username:string, admin?:boolean){
+
+    let value = admin ? 'true' : 'false'
 
     localStorage.setItem('token', String(token))
     localStorage.setItem('user', username)
+    localStorage.setItem('ad', value)
     this.setUsername(username)
+
+  }
+
+  getAdmin(): string | null{
+
+    let admin = localStorage.getItem('ad');
+
+    return admin
 
   }
 }

@@ -1,0 +1,42 @@
+<div class="admin">    
+    <div class="admin-header" *ngIf="choice == 0">
+        <button (click)='choice = 1;'>Listar usuários</button>
+        <button>Listar produtos</button>
+    </div>
+    <ng-container [ngSwitch]="choice">
+    <div class="admin-container" *ngSwitchCase="1">
+        <div class="admin-container-header">
+            <h1>Lista de usuários</h1>
+            <fa-icon [icon]="faXmark" [ngStyle]="{'font-size': '20px'}" (click)="choice = 0"></fa-icon>
+        </div>
+        
+                
+        <div *ngFor="let user of users">
+
+                    <h2>Nome: {{user.nome}}</h2>
+                    <div>Email: {{user.email}}</div>
+                    <div>Telefone: {{user.telefone}}</div>
+                    <div>Endereços:</div>
+                    <div class="adress">
+                        <ng-container *ngFor="let address of user.address; let i = index">
+                            <button class="button-hidden-address" (click)="buttonHideShow(user.id, address.id)"><fa-icon [icon]="faChevronCircleRight"></fa-icon>#{{i + 1}}</button>
+                            <div class="address-item ai-{{user.id}}-{{address.id}}" [@showUp1]="hideShow(user.id, address.id)" #cmp>
+
+                                <div>Cep: {{address.cep}}</div>
+                                <div>Rua: {{address.rua}}</div>
+                                <div>Complemento: {{address.complemento}} - Número: {{address.num}}</div>
+                                <div>Bairro: {{address.bairro}} - Cidade: {{address.cidade}} - Estado: {{address.estado}}</div>                       
+
+                            </div>
+                        </ng-container>
+                    </div>
+                    <label for="admin">Tornar administrador?</label>
+                    <input type="checkbox" [checked]="user.admin" (change)="tornarAdmin(user.id, myinput.checked)" #myinput class="" id="admin" name="admin"/> 
+
+                </div>
+            </div>
+            <div *ngSwitchDefault>        
+        </div>
+    </ng-container>
+
+</div>

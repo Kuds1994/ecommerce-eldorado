@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CepService } from 'src/app/core/services/cep/cep.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { User } from 'src/app/core/models/user';
 import { UserService } from 'src/app/core/services/user/user.service'
 import { Router } from '@angular/router';
@@ -15,7 +15,7 @@ export class SignupComponent implements OnInit {
 
   formulario: FormGroup = this.formBuilder.group({
     nome: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email, Validators.min(10)]],
+    email: ['', [Validators.required, Validators.email]],
     telefone: ['', Validators.required],
     cep: ['', Validators.required],
     rua: ['', Validators.required],
@@ -24,11 +24,11 @@ export class SignupComponent implements OnInit {
     bairro: ['', Validators.required],
     cidade: ['', Validators.required],
     estado: ['', Validators.required],
-    senha: ['', Validators.required],
-    senha2: ['', Validators.required],
-    termos: [false, Validators.required],
+    senha: ['', [Validators.required, Validators.minLength(5)]],
+    senha2: ['',[Validators.required, Validators.minLength(5)]],
+    termos: [false, Validators.requiredTrue],
     compartilhar: [false],
-  })
+  }, {validator: [confirmPassword]} )
 
   @ViewChild('numero', { static: true }) numero!: ElementRef;  
 
@@ -37,6 +37,8 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     
   }
+
+  
 
   preencheCEP(){
 
@@ -72,13 +74,15 @@ export class SignupComponent implements OnInit {
     let email = this.formulario.controls['email'].value
     
     if(this.userService.getEmail(email)){
-      
-      this.formulario.controls['email'].markAsDirty()
+
+      let errors = this.formulario.controls['email'].errors
+
+      let hasAEmail = true
+
+      this.formulario.controls['email'].setErrors({...errors, hasAEmail})
       return
 
-    }
-
-    
+    }    
 
     let id = 1
 
@@ -134,4 +138,12 @@ export class SignupComponent implements OnInit {
 
   }
 
+
 }
+
+const confirmPassword : ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  const name = control.get('senha');
+  const alterEgo = control.get('senha2');
+
+  return name && alterEgo && name.value !== alterEgo.value ? { diffPassword: true } : null;
+};

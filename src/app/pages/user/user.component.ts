@@ -14,8 +14,6 @@ import { UserService } from 'src/app/core/services/user/user.service';
 })
 export class UserComponent {
 
-  hidden = false
-
   formularioEndereco: FormGroup = this.formBuilder.group({
 
     cep: ['', Validators.required],
@@ -31,7 +29,7 @@ export class UserComponent {
   formulario: FormGroup = this.formBuilder.group({    
 
     nome: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email, Validators.min(10)]],
+    email: ['', [Validators.required, Validators.email]],
     telefone: ['', Validators.required],
     formEnderecos: this.formBuilder.array([]),
     termos: [false, Validators.required],
@@ -59,10 +57,16 @@ export class UserComponent {
     termos: false,
     compartilhar: false,
     admin: false,
-    address: this.address
+    address: this.address,
+    newsletter: false
   }
 
-  constructor(private authService: AuthService, private cepService:CepService, private formBuilder: FormBuilder, private userService:UserService, private router:Router) { 
+  constructor(
+    private authService: AuthService, 
+    private cepService:CepService, 
+    private formBuilder: FormBuilder, 
+    private userService:UserService, 
+    private router:Router) { 
 
     this.user = this.userService.getUser(this.authService.getToken())
     this.setUser(this.user)
@@ -112,13 +116,24 @@ export class UserComponent {
     }
     
     let email = this.formulario.controls['email'].value
+
+    let seacrhEmail = this.userService.getEmail(email)
     
-    if(this.userService.getEmail(email)){
+    if(seacrhEmail && email !== this.user.email){
       
-      this.formulario.controls['email'].markAsDirty()
+      let errors = this.formulario.controls['email'].errors
+
+      let hasAEmail = true
+
+      this.formulario.controls['email'].setErrors({...errors, hasAEmail})
+
+      this.formulario.markAllAsTouched()
+
       return
 
     }
+
+    this.getUser()
 
     this.userService.updateUser(this.user)    
 
@@ -129,6 +144,7 @@ export class UserComponent {
     this.formulario.controls['nome'].setValue(user.nome)
     this.formulario.controls['email'].setValue(user.email)
     this.formulario.controls['telefone'].setValue(user.telefone)
+    this.formulario.controls['newsletter'].setValue(user.newsletter)
 
     user.address.forEach((address, i) => {     
 
@@ -163,6 +179,7 @@ export class UserComponent {
     this.user.nome = this.formulario.controls['nome'].value
     this.user.email = this.formulario.controls['email'].value
     this.user.telefone = this.formulario.controls['telefone'].value
+    this.user.newsletter = this.formulario.controls['newsletter'].value
     
 
     this.fb.controls.forEach((controls, i) => {
@@ -202,24 +219,16 @@ export class UserComponent {
       estado: ''
     }
 
-    let addressForm = this.formBuilder.group({
-      cep: ['', Validators.required],
-      rua: ['', Validators.required],
-      num: ['', Validators.required],
-      complemento: [''],
-      bairro: ['', Validators.required],
-      cidade: ['', Validators.required],
-      estado: ['', Validators.required],
-    })  
-
-    this.fb.push(addressForm)
+    this.fb.push(this.formularioEndereco)
     this.user.address.push(address)
 
   }
 
-  mostrar(asd: any){
+  logout(){
 
-    console.log(asd)
+    this.authService.logout()
+    this.router.navigate(['/login'])
+
   }
   
 

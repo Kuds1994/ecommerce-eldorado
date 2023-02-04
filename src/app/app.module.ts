@@ -14,7 +14,7 @@ import { NotFoundComponent } from './shareds/not-found/not-found.component';
 import { HeaderComponent } from './shareds/header/header.component';
 import { FooterComponent } from './shareds/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
-import { AdminComponent } from './components/admin/admin.component';
+import { AdminComponent } from './pages/admin/admin.component';
 import { UserComponent } from './pages/user/user.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { CartDetailsComponent } from './pages/cart-details/cart-details.component';

@@ -3,12 +3,12 @@
     <div class="login-form">
         <h1>Login</h1>
         <div>
-            <label for="user">Usuário</label>
+            <label for="user">E-mail</label>
             <input type="text" #user id="user">
         </div>
         <div>
             <label for="password">Senha</label>
-            <input type="password" #password>
+            <input type="password" #password (keydown.enter)="makeLogin(user.value, password.value)">
         </div>
         <span [ngStyle]="{'color': 'red'}">{{error}}</span>
         <button class="login-button" (click)="makeLogin(user.value, password.value)">Logar</button>

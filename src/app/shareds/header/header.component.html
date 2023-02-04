@@ -13,7 +13,7 @@
 
     <div class="right-menu">
 
-        <a routerLink="{{user == '' ? '/login' : '/user'}}">{{user != '' ? 'Bem Vindo, ' + user : '' }} <fa-icon [icon]="faUser"></fa-icon></a>
+        <a routerLink="{{user == '' ? '/login' : '/user'}}">{{user != '' ? 'Bem vindo, ' + user : '' }} <ng-container *ngIf="user == ''"><fa-icon [icon]="faUser"></fa-icon></ng-container></a>
         <a routerLink="/cart"><fa-icon [icon]="faCartShopping"></fa-icon></a>
 
     </div>

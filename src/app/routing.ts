@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'; // CLI imports router
-import { AdminComponent } from './components/admin/admin.component';
+import { AdminComponent } from './pages/admin/admin.component';
 import { CartDetailsComponent } from './pages/cart-details/cart-details.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
@@ -14,17 +14,18 @@ import { LeavingCartGuard } from './core/guards/guard-leaving-cart/leaving-cart.
 import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
 import { CreateProductsComponent } from './pages/create-products/create-products.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { GuardAdminGuard } from './core/guards/guard-admin/guard-admin.guard';
 
 const routes: Routes = [
 
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'admin', component: AdminComponent},
   {path: 'user', component: UserComponent, canActivate: [GuardsGuard]},
   {path: 'cart', component: CartDetailsComponent},
   {path: 'checkout', component: CheckoutComponent, canDeactivate: [LeavingCartGuard], canActivate: [GuardsGuard]},  
   {path: 'confirmation', component: ConfirmationComponent, canActivate: [GuardsGuard]},
   {path: 'signin', component: SignupComponent},
+  {path: 'admin', component: AdminComponent, canActivate: [GuardAdminGuard]},
   {path: 'create-products', component: CreateProductsComponent, canActivate:[GuardsGuard]},
   {path: 'product/:id', component: ProductDetailsComponent},
   {path: 'product-list/:category', component: ProductListPageComponent},
