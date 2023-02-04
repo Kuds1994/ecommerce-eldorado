@@ -1,0 +1,131 @@
+<div class="signin">
+    <form class="signin-container" [formGroup]="formulario" (ngSubmit)="saveUser()">
+        <h1>Cadastro de usuário</h1>
+        <div class="personal-data ">
+            <label for="name">
+                Nome completo
+            </label>
+            <input type="text" formControlName="nome"  class="large" name="name" id="name">
+            <div *ngIf="formulario.get('nome')?.errors && (formulario.get('nome')?.touched || formulario.get('nome')?.dirty)"
+                style="color: red;">
+                    Favor preencha o seu nome
+            </div>
+            <label for="email">
+                Email
+            </label>
+            <input type="text" formControlName="email" class="medium" name="email">
+            <div *ngIf="formulario.get('email')?.errors?.['required'] && (formulario.get('email')?.touched || formulario.get('email')?.dirty)" style="color: red;">
+                Preenche o campo de e-mail
+            </div>
+            <div *ngIf="formulario.get('email')?.errors?.['email'] && (formulario.get('email')?.touched || formulario.get('email')?.dirty)"
+                style="color: red;">
+                Não esta no formato correto
+            </div>
+            <div *ngIf="formulario.get('email')?.errors?.['hasAEmail'] && (formulario.get('email')?.touched || formulario.get('email')?.dirty)"
+                style="color: red;">
+                Já existe este e-mail cadastrado 
+            </div>
+            <label for="telefone">
+                Telefone
+            </label>
+            <input type="text" formControlName="telefone"  name="telefone" id="telefone">
+            <div *ngIf="formulario.get('telefone')?.errors && (formulario.get('telefone')?.touched || formulario.get('telefone')?.dirty)"
+                style="color: red;">
+                    Favor preencha o seu telefone
+        </div>
+            </div>
+            <label for="cep">
+                CEP
+            </label>
+            <input type="text" name="cep" id="cep" class="small" formControlName="cep" (focusout)="preencheCEP()">
+            <div *ngIf="formulario.get('cep')?.errors && (formulario.get('cep')?.touched || formulario.get('cep')?.dirty)"
+                style="color: red;">
+                    Favor preencha o seu cep
+            </div>
+                    <label for="rua">
+                        Rua
+                    </label>            
+                    <input type="text" class="medium" name="rua" formControlName="rua" id="rua">
+                    <div *ngIf="formulario.get('rua')?.errors && (formulario.get('rua')?.touched || formulario.get('rua')?.dirty)"
+                        style="color: red;">
+                    Favor preencha a sua rua
+                    </div>
+                    <label for="numero" >
+                        Número
+                    </label>
+                    <input type="text" formControlName="num" class="small"  #numero name="numero" id="numero">
+                    <div *ngIf="formulario.get('num')?.errors && (formulario.get('num')?.touched || formulario.get('num')?.dirty)"
+                        style="color: red;">
+                            Favor preencha o numero da sua casa
+                    </div>
+                <label for="complemento">
+                    Complemento
+                </label>
+                <input type="text" formControlName="complemento" name="complemento" id="complemento">
+
+                <label for="bairro">
+                    Bairro
+                </label>
+                <input type="text" name="bairro" formControlName="bairro" id="bairro">
+                <div *ngIf="formulario.get('bairro')?.errors && (formulario.get('bairro')?.touched || formulario.get('bairro')?.dirty)"
+                style="color: red;">
+                    Favor preencha o seu bairro
+                </div>
+                <label for="cidade">
+                    Cidade
+                </label>
+                <input type="text"  name="cidade" formControlName="cidade" id="cidade">
+                <div *ngIf="formulario.get('cidade')?.errors && (formulario.get('cidade')?.touched || formulario.get('cidade')?.dirty)"
+                style="color: red;">
+                    Favor preencha o seu bairro
+                </div>   
+                <label for="estado">
+                    Estado
+                </label>
+                <input type="text"  name="estado" class="small" formControlName="estado" id="estado">
+                <div *ngIf="formulario.get('estado')?.errors && (formulario.get('estado')?.touched || formulario.get('estado')?.dirty)"
+                style="color: red;">
+                    Favor preencha o seu bairro
+                </div>
+        <label for="senha">
+            Senha
+        </label>
+        <input type="password" formControlName="senha" name="senha" id="senha">
+        <div *ngIf="formulario.get('senha')?.errors?.['required'] && (formulario.get('senha')?.touched || formulario.get('senha')?.dirty)" style="color: red;">
+            Por favor, preencha a senha 
+        </div> 
+        <div *ngIf="formulario.get('senha')?.errors?.['minlength'] && (formulario.get('senha')?.touched || formulario.get('senha')?.dirty)" style="color: red;">
+            Senha precisa ter mais de 5 caracteres 
+        </div>       
+        <label for="senha2">
+            Confirmar senha
+        </label>
+        <input type="password" name="senha2" formControlName="senha2" id="senha2">
+        <div *ngIf="formulario.get('senha2')?.errors?.['required'] && (formulario.get('senha2')?.touched || formulario.get('senha2')?.dirty)" style="color: red;">
+            Favor preencha para confirmar sua senha
+        </div>
+        <div *ngIf="formulario.get('senha2')?.errors?.['minlength'] && (formulario.get('senha2')?.touched || formulario.get('senha2')?.dirty)" style="color: red;">
+            Senha precisa ter mais de 5 caracteres
+        </div>  
+        <div *ngIf="formulario.errors?.['diffPassword'] && (formulario.get('senha2')?.touched || formulario.get('senha2')?.dirty)"
+                style="color: red;">
+            Senhas não coincidem
+        </div>
+        <label for="termos">
+            Aceite os <a href="https://assinei.digital/termos-e-condicoes/#:~:text=O%20que%20s%C3%A3o%20termos%20e,um%20servi%C3%A7o%20e%20seu%20usu%C3%A1rio.">termos e condições</a>
+        </label>
+        <input type="checkbox" name="termos" id="termos" formControlName="termos" >
+        <div *ngIf="formulario.get('termos')?.errors && (formulario.get('termos')?.touched || formulario.get('termos')?.dirty)"
+                style="color: red;">
+                    Precisa aceiar os termos de uso
+                </div>
+        <label for="termos">
+            Aceita comprartilhar seus dados para uso interno? <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank">Lei Geral de Proteção de Dados Pessoais (LGPD)</a>
+        </label>
+        <input type="checkbox" name="comprartilhar" id="comprartilhar" formControlName="compartilhar">
+    
+        <button>Cadastrar</button>
+
+    </form>
+
+</div>

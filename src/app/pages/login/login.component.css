@@ -2,10 +2,10 @@
 
     height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;    
     align-items: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 
 }
 
@@ -42,5 +42,11 @@
 .login-button:hover{
 
     cursor: pointer;
+
+}
+
+.login-signin{
+
+    margin-left: 50px;
 
 }

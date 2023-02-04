@@ -14,7 +14,7 @@ import { NotFoundComponent } from './shareds/not-found/not-found.component';
 import { HeaderComponent } from './shareds/header/header.component';
 import { FooterComponent } from './shareds/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
-import { AdminComponent } from './components/admin/admin.component';
+import { AdminComponent } from './pages/admin/admin.component';
 import { UserComponent } from './pages/user/user.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { CartDetailsComponent } from './pages/cart-details/cart-details.component';
@@ -28,7 +28,8 @@ import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
 import { CreateProductsComponent } from './pages/create-products/create-products.component';
 import { ListUsersComponent } from './pages/list-users/list-users.component';
-
+import { SignupComponent } from './pages/signup/signup.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { ListUsersComponent } from './pages/list-users/list-users.component';
     ProductListPageComponent,
     CreateProductsComponent,
     ListUsersComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,8 @@ import { ListUsersComponent } from './pages/list-users/list-users.component';
     AppRoutingModule,    
     SwiperModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true

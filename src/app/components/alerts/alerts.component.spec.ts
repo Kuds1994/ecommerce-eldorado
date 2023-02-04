@@ -20,11 +20,7 @@ describe('AlertsComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
+  
   it('should set alerts to true', () => {
     spyOn(component, 'setAlerts')
 

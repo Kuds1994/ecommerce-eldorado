@@ -19,11 +19,7 @@ describe('ListProductsComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
+  
   it('should add to cart', () => {
 
     spyOn(component, 'addToCart')

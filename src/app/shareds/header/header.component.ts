@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { faUser, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { User } from 'src/app/core/models/user';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import { faUser, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
 
-  user: string = ''
+  user:string = ''
 
   faUser = faUser
   faCartShopping = faCartShopping
@@ -19,8 +20,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.user = this.authService.getUsername()
-    this.authService.setUsername(this.user)
     this.authService.currentUser.subscribe(msg => this.user = msg);
 
   }

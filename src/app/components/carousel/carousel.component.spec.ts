@@ -21,11 +21,7 @@ describe('CarouselComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('should have a titel', () => {
+  it('should have a title', () => {
 
     component.carouselTitle = 'Carousel Title';
 

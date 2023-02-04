@@ -23,4 +23,6 @@ export class AuthApiService {
     return this.http.get<any>(`https://dummyjson.com/auth/users`)
 
   }
+
+
 }

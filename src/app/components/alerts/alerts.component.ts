@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertsService } from 'src/app/core/services/alerts/alerts.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alerts',
@@ -43,8 +43,7 @@ export class AlertsComponent implements OnInit {
     this.alertsService.setNavigation()
     this.alertsService.setShow(false)     
     this.router.navigate([`/`])
- 
-
+    
   }
 
   hide(){

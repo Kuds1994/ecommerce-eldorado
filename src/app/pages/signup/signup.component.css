@@ -40,58 +40,17 @@
     display: inline-block;
 }
 
-.spacer{
-    width: 100%;
-    margin: 50px 0;
-    border: 1px solid gray;
-}
-
 .signin-container button{
 
     width: 100%;
     border: 0;
-    background-color: gray;
+    background-color: green;
     color: white;
-    font-size: 15px;
+    font-size: 20px;
+    border-radius: 10px;
     margin: 10px 0;
 
-}  
-
-.signin-container button:hover{
-
-    cursor: pointer;
-
-}  
-
-.signin-container-header{
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-}
-
-.signin-container-header a{
-
-    margin: 10px;
-    text-decoration: none;
-    background-color: black;
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.signin-container-header a:last-child{
-
-    background-color: red;
-
 }
 
 
 
-.signin-container-header a:hover{
-
-    cursor: pointer;
-
-}

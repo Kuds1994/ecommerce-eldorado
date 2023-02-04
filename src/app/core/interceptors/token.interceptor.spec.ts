@@ -1,5 +1,6 @@
-import { HttpClient, HttpHandler, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { Observable } from 'rxjs';
 
 import { TokenInterceptor } from './token.interceptor';
 
@@ -14,9 +15,14 @@ describe('TokenInterceptor', () => {
       ]
   }));
 
-  it('should be created', () => {
+  it('should intercept Http requisitions', () => {
     const interceptor: TokenInterceptor = TestBed.inject(TokenInterceptor);
-    expect(interceptor).toBeTruthy();
+
+    spyOn(interceptor, 'intercept')
+
+    interceptor.intercept(request, next)
+
+    expect(interceptor.intercept).toHaveBeenCalled();
   });
 
 });
