@@ -1,0 +1,58 @@
+.alert{
+
+    display: flex;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    z-index: 1000;
+    
+}
+
+.alert-main{
+
+    position: absolute;
+    width: 300px;
+    top: -200px;
+    background-color: white;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+    border-radius: 10px;
+    padding: 20px;
+
+}
+
+.alert-main button{
+
+    border: 0;
+    color: gray;
+    border-radius: 10px;
+    padding: 5px;
+
+}
+
+.alert-main button{
+
+    border: 0;
+    color: gray;
+    border-radius: 10px;
+    padding: 5px 10px;
+
+}
+
+.alert-main-button-no{
+
+    margin-left: 10px;
+    background-color: gray;
+    color: white !important;
+
+}
+
+.alert-main button:hover{
+
+    cursor: pointer;
+
+}
+
+

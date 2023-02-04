@@ -22,6 +22,12 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { SwiperModule } from "swiper/angular";
+import { AlertsComponent } from './components/alerts/alerts.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { TokenInterceptor } from './core/interceptors/token.interceptor';
+import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
+import { CreateProductsComponent } from './pages/create-products/create-products.component';
+import { ListUsersComponent } from './pages/list-users/list-users.component';
 
 
 
@@ -42,6 +48,10 @@ import { SwiperModule } from "swiper/angular";
     CheckoutComponent,
     ConfirmationComponent,
     CarouselComponent,
+    AlertsComponent,
+    ProductListPageComponent,
+    CreateProductsComponent,
+    ListUsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,9 +59,12 @@ import { SwiperModule } from "swiper/angular";
     BrowserAnimationsModule,
     AppRoutingModule,    
     SwiperModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

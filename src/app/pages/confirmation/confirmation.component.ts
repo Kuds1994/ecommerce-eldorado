@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Cart } from 'src/app/core/models/cart';
-import { CartService } from 'src/app/services/cart/cart.service';
+import { CartService } from 'src/app/core/services/cart/cart.service';
 
 @Component({
   selector: 'app-confirmation',

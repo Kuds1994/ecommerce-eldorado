@@ -3,7 +3,6 @@
     width: 100%;
     height: 100vh;
 
-
 }
 
 .cart-itens td img{
@@ -16,6 +15,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-content: center;
+    height: 100%;
 
 }
 

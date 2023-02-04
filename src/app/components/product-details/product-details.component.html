@@ -1,7 +1,7 @@
 <div class="product-details-container">
     <div class="product-details-main">
 
-        <div class="product-details-image"><img src="{{product.img}}" alt=""></div>
+        <div class="product-details-image"><img src="{{product.thumbnail}}" alt=""></div>
         <div class="product-details-informations">
 
 
@@ -15,7 +15,7 @@
                 
                 </div>
                 <div>
-                    <h1 class="product-details-informations-price">{{product.value | currency: 'BRL'}}</h1>
+                    <h1 class="product-details-informations-price">{{product.price | currency: 'BRL'}}</h1>
                     <button class="product-details-informations-buy-button" (click)="addToCart(product, quantity.value)">COMPRAR</button>   
 
                 </div>

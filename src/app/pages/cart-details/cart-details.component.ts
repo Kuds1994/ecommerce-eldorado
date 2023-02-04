@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { faShoppingCart, faTrash, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Cart } from 'src/app/core/models/cart';
 import { Product } from 'src/app/core/models/product';
-import { CartService } from 'src/app/services/cart/cart.service';
-import { DiscountService } from 'src/app/services/discount/discount.service';
+import { ProductDummy } from 'src/app/core/models/product_dummy';
+import { CartService } from 'src/app/core/services/cart/cart.service';
+import { DiscountService } from 'src/app/core/services/discount/discount.service';
 
 @Component({
   selector: 'app-cart-details',
@@ -30,7 +31,7 @@ export class CartDetailsComponent implements OnInit {
 
   
   
-  addQtdToCart(id: Product) {
+  addQtdToCart(id: ProductDummy) {
 
     this.cartService.addQtdToCart(id)
 

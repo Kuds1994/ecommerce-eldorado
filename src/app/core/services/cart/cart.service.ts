@@ -3,6 +3,7 @@ import { Cart } from 'src/app/core/models/cart';
 import { Product } from 'src/app/core/models/product';
 import { ProductCart } from 'src/app/core/models/products_cart';
 import { BehaviorSubject } from 'rxjs';
+import { ProductDummy } from '../../models/product_dummy';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class CartService {
 
   constructor() { }
 
-  addQtdToCart(product: Product)  {
+  addQtdToCart(product: ProductDummy)  {
 
     const p = this.cart.products.findIndex((p) =>
 
@@ -45,7 +46,7 @@ export class CartService {
 
   }
 
-  addQtdToCartWithQuantity(product: Product, quantity: number)  {
+  addQtdToCartWithQuantity(product: ProductDummy, quantity: number)  {
 
     const p = this.cart.products.findIndex((p) =>
 
@@ -74,7 +75,7 @@ export class CartService {
 
     this.cart.subtotal = this.cart.products.reduce((a, b) =>{
 
-      return a + (b.value * b.qtd!);
+      return a + (b.price * b.qtd!);
 
     }, 0)
 

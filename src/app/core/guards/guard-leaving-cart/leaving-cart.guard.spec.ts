@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GuardsGuard } from './guards.guard';
+import { LeavingCartGuard } from './leaving-cart.guard';
 
-describe('GuardsGuard', () => {
-  let guard: GuardsGuard;
+describe('LeavingCartGuard', () => {
+  let guard: LeavingCartGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(GuardsGuard);
+    guard = TestBed.inject(LeavingCartGuard);
   });
 
   it('should be created', () => {

@@ -8,8 +8,11 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { UserComponent } from './pages/user/user.component';
-import { GuardsGuard } from './core/guard-login/guards.guard';
+import { GuardsGuard } from './core/guards/guard-login/guards.guard';
 import { NotFoundComponent } from './shareds/not-found/not-found.component';
+import { LeavingCartGuard } from './core/guards/guard-leaving-cart/leaving-cart.guard';
+import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
+import { CreateProductsComponent } from './pages/create-products/create-products.component';
 
 const routes: Routes = [
 
@@ -18,9 +21,11 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'user', component: UserComponent, canActivate: [GuardsGuard]},
   {path: 'cart', component: CartDetailsComponent},
-  {path: 'checkout', component: CheckoutComponent},  
+  {path: 'checkout', component: CheckoutComponent, canDeactivate: [LeavingCartGuard]},  
   {path: 'confirmation', component: ConfirmationComponent},
+  {path: 'create-products', component: CreateProductsComponent, canActivate:[GuardsGuard]},
   {path: 'product/:id', component: ProductDetailsComponent},
+  {path: 'product-list/:category', component: ProductListPageComponent},
   {path: '**', component: NotFoundComponent}
   
 ]; // sets up routes constant where you define your routes

@@ -37,6 +37,10 @@
   object-fit: cover;
 }
 
+::backdrop {
+    background-color: fadeout(#000, 50%);
+}
+
 
 *{
    
@@ -53,7 +57,7 @@ body{
 
 }
 
-body, html{
+body{
 
     height: 100%;
 
@@ -297,6 +301,61 @@ body, html{
 .button-finish:hover{
 
     cursor: pointer
+
+}
+
+.product-list-header{
+
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   align-items: center;
+   margin-bottom: 50px;
+
+}
+
+.product-list-search{
+
+   width: 40%;
+   padding: 10px;
+   border: .1px solid gray;
+   border-radius: 10px;
+   font-size: 20px;
+
+}
+
+.product-list {
+
+    margin: auto;
+
+}.product {
+
+    padding: 20px;
+    border: .2px solid gainsboro; 
+    width: 20%;
+    margin: 15px 6.66%;
+    display: inline-block;
+
+}
+
+.product img {
+
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+
+}
+
+.product-description{
+
+    margin: 10px 0;
+
+}
+
+.product-price{
+
+    font-size: 20px;
+    margin: 10px 0;
 
 }
 

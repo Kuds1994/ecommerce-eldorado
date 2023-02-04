@@ -1,7 +1,7 @@
 <div class="login">
 
-
     <div class="login-form">
+        <h1>Login</h1>
         <div>
             <label for="user">Usuário</label>
             <input type="text" #user id="user">
@@ -10,7 +10,8 @@
             <label for="password">Senha</label>
             <input type="password" #password>
         </div>
-        <button class="login-button" (click)="makeLogin(user.value)">Logar</button>
+        <span [ngStyle]="{'color': 'red'}">{{error}}</span>
+        <button class="login-button" (click)="makeLogin(user.value, password.value)">Logar</button>
     </div>
 
     

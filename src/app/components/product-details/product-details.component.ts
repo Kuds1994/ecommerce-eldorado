@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute  } from '@angular/router';
-import { Product } from 'src/app/core/models/product';
-import { CartService } from 'src/app/services/cart/cart.service';
-import { ProductService } from 'src/app/services/product/product.service';
+import { ProductDummy } from 'src/app/core/models/product_dummy';
+import { AuthApiService } from 'src/app/core/services/auth/auth-api.service';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { CartService } from 'src/app/core/services/cart/cart.service';
+import { ProductService } from 'src/app/core/services/product/product.service';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -10,10 +12,36 @@ import { ProductService } from 'src/app/services/product/product.service';
 })
 export class ProductDetailsComponent implements OnInit  {
 
-  product!: Product; 
+  product: ProductDummy = {
+    id: 0,
+    description: '',
+    title: '',
+    price: 0,
+    discountPercentage: 0,
+    rating: 0,
+    stock: 0,
+    brand: '',
+    category: '',
+    thumbnail: '',
+    images: []
+  }; 
 
-  constructor(private route:ActivatedRoute, private productService:ProductService, private cartService:CartService){
+  constructor(
+    private route:ActivatedRoute, 
+    private productService:ProductService, 
+    private cartService:CartService){
 
+    const id = this.route.snapshot.paramMap.get('id');
+    this.productService.getProductById(Number(id)).subscribe({
+      next: (response) =>{
+
+        this.product = response
+
+      },
+      error: (error) =>{
+        
+      }});  
+      
   }
 
   qtd = 1
@@ -33,12 +61,10 @@ export class ProductDetailsComponent implements OnInit  {
 
   ngOnInit(): void {
 
-    const id = this.route.snapshot.paramMap.get('id');
-    this.product = this.productService.getProductById(Number(id))!
-  
+    
   }
 
-  addToCart(product: Product, quantity: string){
+  addToCart(product: ProductDummy, quantity: string){
 
     this.cartService.addQtdToCartWithQuantity(product, Number(quantity));
   

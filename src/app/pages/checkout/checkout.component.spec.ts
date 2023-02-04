@@ -27,24 +27,3 @@ describe('CheckoutComponent', () => {
   });
 });
 
-describe('CheckoutComponent', () => {
-  let component: CheckoutComponent;
-  let fixture: ComponentFixture<CheckoutComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CheckoutComponent ]
-    })
-    .compileComponents();
-
-    
-
-    fixture = TestBed.createComponent(CheckoutComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(getSubmmit().disabled).toBe(true);
-  });
-});
